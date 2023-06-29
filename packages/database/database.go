@@ -229,7 +229,7 @@ func AdidasLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1119683086507057242/jVRDjqmMVBmlelNnUrw5Hkr9vc8fg-v8yrz7_1Qkvny7w2dSn6uJPL9WqG7vkcc-qWQa", whData)
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1124077932881641503/FZaEctqZsgojJv-KK40RY4pm7I-pB4x1CbeRhnbRwZeU8KBoylJP5Od37QiLH44DPc1A", whData)
 	//err := discord.PostWebhook("https://discord.com/api/webhooks/1119683086507057242/jVRDjqmMVBmlelNnUrw5Hkr9vc8fg-v8yrz7_1Qkvny7w2dSn6uJPL9WqG7vkcc-qWQa", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)

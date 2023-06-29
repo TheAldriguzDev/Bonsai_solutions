@@ -17,6 +17,13 @@ Bonsai solutions are written in golang.
 We also have our built in solvers, right now we support:
 - DataDome
 
+## How to make it works:
+You have to add a "proxies" folder in your project and add proxies file, as many as you want.
+
+To start the project, you can follow two possible ways:
+- go run main.go
+- go build, to create the .exe and run the created file
+
 ## Author:
 All this project has been made from me, Aldriguz. 
 If you need support or if you have some question dm me on discord: aldriguz
