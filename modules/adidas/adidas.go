@@ -190,6 +190,8 @@ func (adidas *adidasSession) parseSearch(search SearchData) error {
 		}
 	}
 
+	wg.Wait()
+
 	err := database.StartDataBase("./monitorData/adidas.json", productList)
 	if err != nil {
 		return err
@@ -290,7 +292,7 @@ func (adidas *adidasSession) getProductInfo(sku string) ([]database.Size, error)
 	// We can now parse the response
 
 	for _, tempSize := range productResp.VariationList {
-		if tempSize.Size != "0" {
+		if tempSize.Availability != 0 {
 			availableSizes = append(availableSizes, database.Size{
 				Size:  tempSize.Size,
 				Value: strconv.Itoa(tempSize.Availability),

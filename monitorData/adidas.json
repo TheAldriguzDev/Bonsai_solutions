@@ -1,3 +1,200 @@
 {
-    "products": []
+	"products": [
+		{
+			"site": "Adidas",
+			"sku": "H03477",
+			"name": "Scarpe Campus 00s",
+			"price": "110",
+			"image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/6eb43ef0e5164ae4b826af5600f5561d_9366/Scarpe_Campus_00s_Rosso_H03477_01_standard.jpg",
+			"sizes": [
+				{
+					"size": "42 2/3",
+					"value": "1"
+				},
+				{
+					"size": "44 2/3",
+					"value": "8"
+				},
+				{
+					"size": "45 1/3",
+					"value": "2"
+				},
+				{
+					"size": "46",
+					"value": "5"
+				},
+				{
+					"size": "46 2/3",
+					"value": "4"
+				},
+				{
+					"size": "47 1/3",
+					"value": "1"
+				},
+				{
+					"size": "48",
+					"value": "1"
+				},
+				{
+					"size": "48 2/3",
+					"value": "1"
+				}
+			],
+			"color": "Better Scarlet / Clear Pink / Cloud White"
+		},
+		{
+			"site": "Adidas",
+			"sku": "HQ8705",
+			"name": "Scarpe Campus 00s",
+			"price": "110",
+			"image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/abe8b7899d8640dabf9aaf80015d5722_9366/Scarpe_Campus_00s_Giallo_HQ8705_01_standard.jpg",
+			"sizes": [
+				{
+					"size": "41 1/3",
+					"value": "15"
+				},
+				{
+					"size": "42",
+					"value": "15"
+				},
+				{
+					"size": "42 2/3",
+					"value": "15"
+				},
+				{
+					"size": "43 1/3",
+					"value": "15"
+				},
+				{
+					"size": "44",
+					"value": "15"
+				},
+				{
+					"size": "44 2/3",
+					"value": "15"
+				},
+				{
+					"size": "45 1/3",
+					"value": "15"
+				},
+				{
+					"size": "46",
+					"value": "15"
+				},
+				{
+					"size": "46 2/3",
+					"value": "13"
+				},
+				{
+					"size": "47 1/3",
+					"value": "15"
+				},
+				{
+					"size": "48",
+					"value": "12"
+				},
+				{
+					"size": "48 2/3",
+					"value": "3"
+				}
+			],
+			"color": "Almost Yellow / Core Black / Almost Yellow"
+		},
+		{
+			"site": "Adidas",
+			"sku": "HP6539",
+			"name": "Scarpe Campus 00s TKO",
+			"price": "110",
+			"image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/66ffaa96ce69495ba054af5700b2909d_9366/Scarpe_Campus_00s_TKO_Nero_HP6539_01_standard.jpg",
+			"sizes": [
+				{
+					"size": "39 2/3",
+					"value": "5"
+				},
+				{
+					"size": "40 1/3",
+					"value": "3"
+				},
+				{
+					"size": "7",
+					"value": "2"
+				},
+				{
+					"size": "42",
+					"value": "9"
+				},
+				{
+					"size": "42 2/3",
+					"value": "4"
+				},
+				{
+					"size": "43 1/3",
+					"value": "1"
+				},
+				{
+					"size": "10.5",
+					"value": "3"
+				},
+				{
+					"size": "46 1/3",
+					"value": "1"
+				}
+			],
+			"color": "Core Black / Power Red / Off White"
+		},
+		{
+			"site": "Adidas",
+			"sku": "HP6538",
+			"name": "Scarpe Campus 00s TKO",
+			"price": "110",
+			"image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/e0bb472960da41449fdbaf5700b22c35_9366/Scarpe_Campus_00s_TKO_Beige_HP6538_01_standard.jpg",
+			"sizes": [
+				{
+					"size": "36",
+					"value": "2"
+				},
+				{
+					"size": "36 2/3",
+					"value": "5"
+				},
+				{
+					"size": "38",
+					"value": "6"
+				},
+				{
+					"size": "39 2/3",
+					"value": "4"
+				},
+				{
+					"size": "42",
+					"value": "1"
+				},
+				{
+					"size": "43 1/3",
+					"value": "1"
+				},
+				{
+					"size": "45",
+					"value": "1"
+				},
+				{
+					"size": "10.5",
+					"value": "1"
+				},
+				{
+					"size": "45 2/3",
+					"value": "1"
+				},
+				{
+					"size": "46 1/3",
+					"value": "1"
+				},
+				{
+					"size": "47",
+					"value": "3"
+				}
+			],
+			"color": "Hemp / Dark Brown / Off White"
+		}
+	]
 }
