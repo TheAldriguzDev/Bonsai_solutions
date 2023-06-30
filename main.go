@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/adidas"
+	"github.com/TheAldriguzDev/Bonsai_solutions/modules/bootz"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/footlocker"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/zalando"
 	"github.com/TheAldriguzDev/Bonsai_solutions/packages/log"
@@ -19,6 +20,7 @@ func main() {
 	log.General("1 - Footlocker", location)
 	log.General("2 - Zalando", location)
 	log.General("3 - Adidas", location)
+	log.General("4 - Bootz", location)
 	fmt.Printf(log.Colors.DarkGrey+"\r[%s] [%s] >>> "+log.Colors.Reset, location, log.GetTime())
 
 	if _, err := fmt.Scan(&selection); err != nil || selection < 0 || selection > 4 {
@@ -36,6 +38,9 @@ func main() {
 		break
 	case 3:
 		adidas.InitAdidas()
+		break
+	case 4:
+		bootz.InitBootz()
 		break
 	default:
 		log.Error("No module found!", "Error")

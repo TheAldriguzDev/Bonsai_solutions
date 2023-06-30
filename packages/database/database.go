@@ -183,6 +183,9 @@ func SendLog(product Product) {
 	case "Zalando":
 		ZalandoLog(product)
 		break
+	case "Bootz":
+		BootzLog(product)
+		break
 	}
 
 }
@@ -239,7 +242,7 @@ func AdidasLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1124077932881641503/FZaEctqZsgojJv-KK40RY4pm7I-pB4x1CbeRhnbRwZeU8KBoylJP5Od37QiLH44DPc1A", whData)
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1123628879416930434/fWivbwuzHBWBJhZ9SU3BVSFLvIGnQCyloDD34BS5eMPEHu810ueucqupKxyaHxdhjqV8", whData)
 	//err := discord.PostWebhook("https://discord.com/api/webhooks/1119683086507057242/jVRDjqmMVBmlelNnUrw5Hkr9vc8fg-v8yrz7_1Qkvny7w2dSn6uJPL9WqG7vkcc-qWQa", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
@@ -294,7 +297,7 @@ func FootlockerLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1116419327931986022/a7aZWXwSff3MNaeUPcWlWruwZd6c_xhRqLnl4YV9ECjBpaltnwTJohVe5hX5znMqn_MN", whData)
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1119684786529779742/kwvf9VL0T-pmSh8M9juBBJSBfRS_zMdvSEquM8xSLlqoACcRJgPDSHSpiZbelzPu3qGN", whData)
 	//err := discord.PostWebhook("https://discord.com/api/webhooks/1119683086507057242/jVRDjqmMVBmlelNnUrw5Hkr9vc8fg-v8yrz7_1Qkvny7w2dSn6uJPL9WqG7vkcc-qWQa", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
@@ -354,7 +357,67 @@ func ZalandoLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1124386464424263801/cmWgzQfC7UOOlwh5bPPOwS_gUAyIJIgQLCduUloJ6Ppqz1IKxwEahBngsg-tF72BBwZh", whData)
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1120085184163885247/_boNPxubvjk50fAhIjVmwpIwLFDlWYMsr_FM7ZsrToUWEkv16pImp9FAB_MaQAaI9Zo-", whData)
+	//err := discord.PostWebhook("https://discord.com/api/webhooks/1119683086507057242/jVRDjqmMVBmlelNnUrw5Hkr9vc8fg-v8yrz7_1Qkvny7w2dSn6uJPL9WqG7vkcc-qWQa", whData)
+	if err != nil {
+		log.Error("An error occured while sending the webhook!", location)
+		fmt.Println(whData)
+		time.Sleep(5 * time.Second)
+		AdidasLog(product)
+	} else {
+		log.Success("Webhook sent", location)
+		return
+	}
+}
+
+func BootzLog(product Product) {
+	var sizeMessage string = ""
+	for _, size := range product.Sizes {
+		sizeMessage = sizeMessage + fmt.Sprintf("%s\n", size.Size)
+	}
+	whData := discord.DiscordParams{
+		Embeds: []discord.Embed{
+			{
+				Author: discord.Author{
+					Name:    "Hypemedia Monitors",
+					IconURL: "https://media.discordapp.net/attachments/906886120502075403/1095465707690524753/hypemedialov2.jpg?width=1170&height=1170",
+				},
+				Title: product.Name,
+				Color: 16776975,
+				Url:   fmt.Sprintf("https://www.boozt.com/%s", product.Sku),
+				Footer: discord.Footer{
+					Text: "Hypemedia Monitors",
+				},
+				Fields: []discord.Field{
+					{
+						Name:   "Name",
+						Value:  product.Name,
+						Inline: true,
+					},
+					{
+						Name:   "Color",
+						Value:  product.Color,
+						Inline: true,
+					},
+					{
+						Name:   "Price",
+						Value:  product.Price,
+						Inline: true,
+					},
+					{
+						Name:   "Sizes",
+						Value:  sizeMessage,
+						Inline: false,
+					},
+				},
+				Thumbnail: discord.Thumbnail{
+					URL: product.Image,
+				},
+			},
+		},
+	}
+
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1124468356641206405/I0A0H1cFBTr0_XNEcC6RXGVjw5eIYZj8_njszBQMtyOL4t3JBR0L9jkoqYuzy3TJvwtY", whData)
 	//err := discord.PostWebhook("https://discord.com/api/webhooks/1119683086507057242/jVRDjqmMVBmlelNnUrw5Hkr9vc8fg-v8yrz7_1Qkvny7w2dSn6uJPL9WqG7vkcc-qWQa", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
