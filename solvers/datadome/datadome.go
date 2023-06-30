@@ -301,8 +301,8 @@ func (ddModule *DataDomeSession) GenFingerPrint(data GenerateData) ([]Param, err
 		Emt:                false,
 		Bfr:                false,
 		Dbov:               false,
-		Cfpfe:              "RXJyb3I6IENhbm5vdCByZWFkIHByb3BlcnRpZXMgb2YgbnVsbCAocmVhZGluZyAndG9TdHJpbmcnKQ==", // ricorda che gli hai modificati per testare liverpool
-		Stcfp:              "IChodHRwczovL2Nkbi5jb29raWVsYXcub3JnL3NjcmlwdHRlbXBsYXRlcy82LjI5LjAvb3RCYW5uZXJTZGsuanM6NzoxNzM1KQogICAgYXQgaHR0cHM6Ly9jZG4uY29va2llbGF3Lm9yZy9zY3JpcHR0ZW1wbGF0ZXMvNi4yOS4wL290QmFubmVyU2RrLmpzOjc6Njcz",
+		Cfpfe:              "ZnVuY3Rpb24oKXt2YXIgXzB4NTRlZmI0PV8weDEzMzFiNCxfMHg0ZjlkYTI9ZG9jdW1lbnRbXzB4NTRlZmI0KDY0MildKCdceDYyXHg3Mlx4NmZceDc3XHg3M1x4NjVceDcyXHg2Nlx4NmNceDZmXHg3N1x4MmRceDYzXHg2Zlx4NmVceDc0XHg2MVx4NjlceDZlXHg2", // ricorda che gli hai modificati per testare liverpool
+		Stcfp:              "dHRwczovL2pzLmRhdGFkb21lLmNvL3RhZ3MuanM6MjoyMTA3NDcpCiAgICBhdCBfMHg5M2FhMTguZGRfWiAoaHR0cHM6Ly9qcy5kYXRhZG9tZS5jby90YWdzLmpzOjI6MjI2NTgzKQogICAgYXQgaHR0cHM6Ly9qcy5kYXRhZG9tZS5jby90YWdzLmpzOjI6MTgwMDU4",
 		Prm:                true,
 		Tzp:                "Europe/Rome",
 		Cvs:                true,

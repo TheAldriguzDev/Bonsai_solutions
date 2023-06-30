@@ -1,3 +1,40 @@
 {
-    "products": []
+	"products": [
+		{
+			"site": "Footlocker",
+			"sku": "314311015904",
+			"name": "adidas Campus - Uomo Scarpe",
+			"price": "€ 109,99",
+			"image": "https://images.footlocker.com/is/image/FLEU/314311015904_01?wid=520\u0026hei=520\u0026fmt=png-alpha",
+			"sizes": null,
+			"color": "None"
+		},
+		{
+			"site": "Footlocker",
+			"sku": "314311294004",
+			"name": "adidas Campus - Uomo Scarpe",
+			"price": "€ 109,99",
+			"image": "https://images.footlocker.com/is/image/FLEU/314311294004_01?wid=520\u0026hei=520\u0026fmt=png-alpha",
+			"sizes": null,
+			"color": "None"
+		},
+		{
+			"site": "Footlocker",
+			"sku": "314310886404",
+			"name": "adidas Campus - Uomo Scarpe",
+			"price": "€ 109,99",
+			"image": "https://images.footlocker.com/is/image/FLEU/314310886404_01?wid=520\u0026hei=520\u0026fmt=png-alpha",
+			"sizes": null,
+			"color": "None"
+		},
+		{
+			"site": "Footlocker",
+			"sku": "314311003504",
+			"name": "adidas Campus - Uomo Scarpe",
+			"price": "€ 109,99",
+			"image": "https://images.footlocker.com/is/image/FLEU/314311003504_01?wid=520\u0026hei=520\u0026fmt=png-alpha",
+			"sizes": null,
+			"color": "None"
+		}
+	]
 }

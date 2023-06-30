@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/adidas"
+	"github.com/TheAldriguzDev/Bonsai_solutions/modules/footlocker"
 	"github.com/TheAldriguzDev/Bonsai_solutions/packages/log"
 )
 
@@ -27,7 +28,7 @@ func main() {
 
 	switch selection {
 	case 1:
-		//footlocker.InitFootlocker()
+		footlocker.InitFootlocker()
 		break
 	case 2:
 		//zalando.InitZalando()
