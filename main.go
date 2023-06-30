@@ -7,6 +7,7 @@ import (
 
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/adidas"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/footlocker"
+	"github.com/TheAldriguzDev/Bonsai_solutions/modules/zalando"
 	"github.com/TheAldriguzDev/Bonsai_solutions/packages/log"
 )
 
@@ -31,7 +32,7 @@ func main() {
 		footlocker.InitFootlocker()
 		break
 	case 2:
-		//zalando.InitZalando()
+		zalando.InitZalando()
 		break
 	case 3:
 		adidas.InitAdidas()
