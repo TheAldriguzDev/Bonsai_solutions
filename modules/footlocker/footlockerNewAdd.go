@@ -145,10 +145,10 @@ func InitFootlocker() {
 		err = module.GetProducts()
 		if err != nil {
 			log.Error(err.Error(), location)
-			time.Sleep(7 * time.Second)
+			time.Sleep(15 * time.Second)
 			continue
 		}
-		time.Sleep(7 * time.Second)
+		time.Sleep(15 * time.Second)
 	}
 }
 
@@ -162,7 +162,7 @@ func (ftl *footlockerSession) GetProducts() error {
 		return err
 	}
 
-	newCookie := ftl.GetDataDome("https://www.footlocker.it/")
+	newCookie := ftl.GetDataDome()
 
 	req.Header = http.Header{
 		"Host":             {ftl.Host},
@@ -183,6 +183,12 @@ func (ftl *footlockerSession) GetProducts() error {
 		"cookie":           {"datadome=" + newCookie},
 	}
 
+	cookie := &http.Cookie{
+		Name:   "datadome",
+		Value:  newCookie,
+		MaxAge: 604800,
+	}
+
 	// Modify a cookie value
 	cookies := ftl.httpClient.GetCookies(req.URL)
 	for _, cookie := range cookies {
@@ -193,6 +199,7 @@ func (ftl *footlockerSession) GetProducts() error {
 	}
 
 	ftl.httpClient.SetCookies(req.URL, cookies)
+	req.AddCookie(cookie)
 
 	res, err := ftl.httpClient.Do(req)
 

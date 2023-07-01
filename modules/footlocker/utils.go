@@ -53,7 +53,7 @@ func GetTimeStamp() string {
 	return cacheBuster
 }
 
-func (ftl *footlockerSession) GetDataDome(path string) string {
+func (ftl *footlockerSession) GetDataDome() string {
 	var ddStep bool = false
 	var ddRes datadome.DDResponse
 
@@ -61,7 +61,7 @@ func (ftl *footlockerSession) GetDataDome(path string) string {
 		DataDomeKey:     "A55FBF4311ED6F1BF9911EB71931D5",
 		DataDomeVersion: "4.10.2",
 		Cid:             ftl.Cid,
-		Refer:           path,
+		Refer:           "https://www.footlocker.it/",
 		UserAgent:       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
 		Proxy:           ftl.Proxy,
 	}
