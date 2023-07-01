@@ -1,0 +1,150 @@
+{
+	"products": [
+		{
+			"site": "Mana",
+			"sku": "https://manashop.club/scarpe-campus-00s-hq8705.html",
+			"name": "Scarpe Campus 00s",
+			"price": "110",
+			"image": "https://manashop.club/media/catalog/product/h/q/hq8705.jpg",
+			"sizes": [
+				{
+					"size": "41",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "43",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "45",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "47",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "48",
+					"value": "IN_STOCK"
+				}
+			],
+			"color": "Colore"
+		},
+		{
+			"site": "Mana",
+			"sku": "https://manashop.club/scarpe-campus-00s-hq8710.html",
+			"name": "Scarpe Campus 00s",
+			"price": "110",
+			"image": "https://manashop.club/media/catalog/product/H/Q/HQ8710_1.jpg",
+			"sizes": [
+				{
+					"size": "40,5",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "42",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "42,5",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "43",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "44",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "44,5",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "45",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "46",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "46,5",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "47",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "48",
+					"value": "IN_STOCK"
+				}
+			],
+			"color": "Colore"
+		},
+		{
+			"site": "Mana",
+			"sku": "https://manashop.club/scarpe-campus-00s-hq4409.html",
+			"name": "Scarpe Campus 00s",
+			"price": "110",
+			"image": "https://manashop.club/media/catalog/product/H/Q/HQ4409_1.jpg",
+			"sizes": [
+				{
+					"size": "36",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "36,5",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "43",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "44",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "45",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "46",
+					"value": "IN_STOCK"
+				}
+			],
+			"color": "Colore"
+		},
+		{
+			"site": "Mana",
+			"sku": "https://manashop.club/scarpe-campus-00s-h03471.html",
+			"name": "Scarpe Campus 00s",
+			"price": "110",
+			"image": "https://manashop.club/media/catalog/product/H/0/H03471_1.jpg",
+			"sizes": [
+				{
+					"size": "47",
+					"value": "IN_STOCK"
+				}
+			],
+			"color": "Colore"
+		},
+		{
+			"site": "Mana",
+			"sku": "https://manashop.club/scarpe-campus-00s-h03474.html",
+			"name": "Scarpe Campus 00s",
+			"price": "110",
+			"image": "https://manashop.club/media/catalog/product/H/0/H03474_1.jpg",
+			"sizes": [
+				{
+					"size": "47",
+					"value": "IN_STOCK"
+				}
+			],
+			"color": "Colore"
+		}
+	]
+}

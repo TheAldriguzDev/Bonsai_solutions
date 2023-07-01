@@ -9,6 +9,7 @@ import (
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/adidas"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/bootz"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/footlocker"
+	"github.com/TheAldriguzDev/Bonsai_solutions/modules/manashop"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/rinascente"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/zalando"
 	"github.com/TheAldriguzDev/Bonsai_solutions/packages/log"
@@ -24,6 +25,7 @@ func main() {
 	log.General("3 - Adidas", location)
 	log.General("4 - Bootz", location)
 	log.General("5 - Rinascente", location)
+	log.General("6 - Manashop", location)
 	log.General("999 - AIO sites [Soon]", location)
 	fmt.Printf(log.Colors.DarkGrey+"\r[%s] [%s] >>> "+log.Colors.Reset, location, log.GetTime())
 
@@ -48,6 +50,9 @@ func main() {
 		break
 	case 5:
 		rinascente.InitRina()
+		break
+	case 6:
+		manashop.InitMana()
 		break
 	case 999:
 		var wg sync.WaitGroup
