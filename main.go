@@ -14,11 +14,15 @@ import (
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/skatedeluxe"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/zalando"
 	"github.com/TheAldriguzDev/Bonsai_solutions/packages/log"
+	"github.com/TheAldriguzDev/Bonsai_solutions/packages/protection"
 )
 
 var location string = "Dashboard"
 
 func main() {
+
+	go protection.GetProcess("HM", "OCTA")
+
 	var selection int
 	log.General("Select an option: ", location)
 	log.General("1 - Footlocker", location)

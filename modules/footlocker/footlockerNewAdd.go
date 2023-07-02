@@ -162,7 +162,7 @@ func (ftl *footlockerSession) GetProducts() error {
 		return err
 	}
 
-	newCookie := ftl.GetDataDome()
+	//newCookie := ftl.GetDataDome()
 
 	req.Header = http.Header{
 		"Host":             {ftl.Host},
@@ -180,26 +180,26 @@ func (ftl *footlockerSession) GetProducts() error {
 		"Pragma":           {"no-cache"},
 		"Cache-Control":    {"no-cache"},
 		"Te":               {"trailers"},
-		"cookie":           {"datadome=" + newCookie},
+		//"cookie":           {"datadome=" + newCookie},
 	}
 
-	cookie := &http.Cookie{
-		Name:   "datadome",
-		Value:  newCookie,
-		MaxAge: 604800,
-	}
+	// cookie := &http.Cookie{
+	// 	Name:   "datadome",
+	// 	Value:  newCookie,
+	// 	MaxAge: 604800,
+	// }
 
 	// Modify a cookie value
 	cookies := ftl.httpClient.GetCookies(req.URL)
 	for _, cookie := range cookies {
 		if cookie.Name == "datadome" {
-			cookie.Value = newCookie
+			fmt.Println(cookie.Value)
 			break
 		}
 	}
 
-	ftl.httpClient.SetCookies(req.URL, cookies)
-	req.AddCookie(cookie)
+	// ftl.httpClient.SetCookies(req.URL, cookies)
+	// req.AddCookie(cookie)
 
 	res, err := ftl.httpClient.Do(req)
 
