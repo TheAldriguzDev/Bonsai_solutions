@@ -192,6 +192,9 @@ func SendLog(product Product) {
 	case "Mana":
 		ManaLog(product)
 		break
+	case "SkateDeluxe":
+		SkateLog(product)
+		break
 	}
 }
 
@@ -544,6 +547,66 @@ func ManaLog(product Product) {
 
 	err := discord.PostWebhook("https://discord.com/api/webhooks/1124468356641206405/I0A0H1cFBTr0_XNEcC6RXGVjw5eIYZj8_njszBQMtyOL4t3JBR0L9jkoqYuzy3TJvwtY", whData)
 	//err := discord.PostWebhook("https://discord.com/api/webhooks/1124657248522752091/LZC0u58A4FvxTLIiV8PL4dow5wRfslch_AVM72c8SqYdmeOnDRA_FYwWUmSN5OccdXIX", whData)
+	if err != nil {
+		log.Error("An error occured while sending the webhook!", location)
+		fmt.Println(whData)
+		time.Sleep(5 * time.Second)
+		AdidasLog(product)
+	} else {
+		log.Success("Webhook sent", location)
+		return
+	}
+}
+
+func SkateLog(product Product) {
+	var sizeMessage string = ""
+	for _, size := range product.Sizes {
+		sizeMessage = sizeMessage + fmt.Sprintf("%s\n", size.Size)
+	}
+	whData := discord.DiscordParams{
+		Embeds: []discord.Embed{
+			{
+				Author: discord.Author{
+					Name:    "Hypemedia Monitors",
+					IconURL: "https://media.discordapp.net/attachments/906886120502075403/1095465707690524753/hypemedialov2.jpg?width=1170&height=1170",
+				},
+				Title: product.Name,
+				Color: 16776975,
+				Url:   fmt.Sprintf("https://www.skatedeluxe.com/it/hm_p%s", product.Sku),
+				Footer: discord.Footer{
+					Text: "Hypemedia Monitors",
+				},
+				Fields: []discord.Field{
+					{
+						Name:   "Name",
+						Value:  product.Name,
+						Inline: true,
+					},
+					{
+						Name:   "Sku",
+						Value:  product.Sku,
+						Inline: true,
+					},
+					{
+						Name:   "Price",
+						Value:  product.Price,
+						Inline: true,
+					},
+					{
+						Name:   "Sizes",
+						Value:  sizeMessage,
+						Inline: false,
+					},
+				},
+				Thumbnail: discord.Thumbnail{
+					URL: product.Image,
+				},
+			},
+		},
+	}
+
+	//err := discord.PostWebhook("https://discord.com/api/webhooks/1124468356641206405/I0A0H1cFBTr0_XNEcC6RXGVjw5eIYZj8_njszBQMtyOL4t3JBR0L9jkoqYuzy3TJvwtY", whData)
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1124657248522752091/LZC0u58A4FvxTLIiV8PL4dow5wRfslch_AVM72c8SqYdmeOnDRA_FYwWUmSN5OccdXIX", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
