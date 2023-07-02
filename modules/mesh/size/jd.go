@@ -107,7 +107,7 @@ func InitSize() {
 			time.Sleep(7 * time.Second)
 			continue
 		}
-		time.Sleep(6 * time.Second)
+		time.Sleep(7 * time.Second)
 	}
 }
 

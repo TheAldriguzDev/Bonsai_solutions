@@ -110,7 +110,7 @@ func InitAdidas() {
 			time.Sleep(7 * time.Second)
 			continue
 		}
-		time.Sleep(4 * time.Second)
+		time.Sleep(6 * time.Second)
 	}
 }
 
