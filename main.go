@@ -32,7 +32,7 @@ func main() {
 	log.General("5 - Rinascente", location)
 	log.General("6 - Manashop", location)
 	log.General("7 - SkateDeluxe", location)
-	log.General("999 - AIO sites [Soon]", location)
+	//log.General("999 - AIO sites [Soon]", location)
 	fmt.Printf(log.Colors.DarkGrey+"\r[%s] [%s] >>> "+log.Colors.Reset, location, log.GetTime())
 
 	if _, err := fmt.Scan(&selection); err != nil || selection < 0 || selection > 1000 {

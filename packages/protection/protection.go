@@ -1,11 +1,12 @@
 package protection
 
 import (
-	"bonsaio-sourcecode/packages/discord"
-	"bonsaio-sourcecode/packages/log"
 	"os"
 	"strings"
 	"time"
+
+	"github.com/TheAldriguzDev/Bonsai_solutions/packages/discord"
+	"github.com/TheAldriguzDev/Bonsai_solutions/packages/log"
 
 	"github.com/mitchellh/go-ps"
 )
