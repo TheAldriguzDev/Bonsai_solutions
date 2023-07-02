@@ -10,7 +10,9 @@ import (
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/bootz"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/footlocker"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/manashop"
-	"github.com/TheAldriguzDev/Bonsai_solutions/modules/mesh"
+	"github.com/TheAldriguzDev/Bonsai_solutions/modules/mesh/footpatrol"
+	"github.com/TheAldriguzDev/Bonsai_solutions/modules/mesh/jd"
+	"github.com/TheAldriguzDev/Bonsai_solutions/modules/mesh/size"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/rinascente"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/skatedeluxe"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/zalando"
@@ -33,6 +35,8 @@ func main() {
 	log.General("6 - Manashop", location)
 	log.General("7 - SkateDeluxe", location)
 	log.General("8 - JD", location)
+	log.General("9 - Size", location)
+	log.General("10 - Footpatrol", location)
 	//log.General("999 - AIO sites [Soon]", location)
 	fmt.Printf(log.Colors.DarkGrey+"\r[%s] [%s] >>> "+log.Colors.Reset, location, log.GetTime())
 
@@ -65,7 +69,13 @@ func main() {
 		skatedeluxe.InitSkate()
 		break
 	case 8:
-		mesh.InitMesh()
+		jd.InitMesh()
+		break
+	case 9:
+		size.InitSize()
+		break
+	case 10:
+		footpatrol.InitFootpatrol()
 		break
 	case 999:
 		var wg sync.WaitGroup

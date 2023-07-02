@@ -1,4 +1,4 @@
-package mesh
+package jd
 
 import (
 	"encoding/json"
@@ -83,7 +83,7 @@ func InitMesh() {
 		os.Exit(0)
 	}
 
-	module.Host = "https://www.boozt.com/"
+	module.Host = "jdsports.it"
 	module.UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
 	module.Store_Region = "it"
 	module.ProxyArr = proxyArr
@@ -179,9 +179,11 @@ func (mesh *meshSession) ParseSearch(searchData SearchRes) error {
 	var mu sync.Mutex
 
 	for _, product := range searchData.Products {
-		wg.Add(1)
 
-		go mesh.GetProduct(product, &productList, &wg, &mu)
+		if strings.Contains(product.Name, "00") || strings.Contains(strings.ToLower(product.Name), "junior") {
+			wg.Add(1)
+			go mesh.GetProduct(product, &productList, &wg, &mu)
+		}
 	}
 
 	wg.Wait()

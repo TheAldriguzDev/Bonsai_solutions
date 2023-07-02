@@ -198,6 +198,12 @@ func SendLog(product Product) {
 	case "JD":
 		JDLog(product)
 		break
+	case "SIZE":
+		SizeLog(product)
+		break
+	case "Footpatrol":
+		FootpatrolLog(product)
+		break
 	}
 }
 
@@ -639,6 +645,126 @@ func JDLog(product Product) {
 				Title: product.Name,
 				Color: 16776975,
 				Url:   fmt.Sprintf("https://www.jdsports.it/product/hm/%s/", product.Sku),
+				Footer: discord.Footer{
+					Text: "Hypemedia Monitors",
+				},
+				Fields: []discord.Field{
+					{
+						Name:   "Name",
+						Value:  product.Name,
+						Inline: true,
+					},
+					{
+						Name:   "Sku",
+						Value:  product.Sku,
+						Inline: true,
+					},
+					{
+						Name:   "Price",
+						Value:  product.Price,
+						Inline: true,
+					},
+					{
+						Name:   "Sizes",
+						Value:  sizeMessage,
+						Inline: false,
+					},
+				},
+				Thumbnail: discord.Thumbnail{
+					URL: product.Image,
+				},
+			},
+		},
+	}
+
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1125118168101298257/2ZkO_w4XxzX9_1P1xiVVmxJAniwlcXgEztl70O2-KZMmkHwI_5mNc4UwT2tf1M6bNNO5", whData)
+	//err := discord.PostWebhook("https://discord.com/api/webhooks/1124657248522752091/LZC0u58A4FvxTLIiV8PL4dow5wRfslch_AVM72c8SqYdmeOnDRA_FYwWUmSN5OccdXIX", whData)
+	if err != nil {
+		log.Error("An error occured while sending the webhook!", location)
+		fmt.Println(whData)
+		time.Sleep(5 * time.Second)
+		AdidasLog(product)
+	} else {
+		log.Success("Webhook sent", location)
+		return
+	}
+}
+
+func SizeLog(product Product) {
+	var sizeMessage string = ""
+	for _, size := range product.Sizes {
+		sizeMessage = sizeMessage + fmt.Sprintf("%s - %s\n", size.Size, size.Value)
+	}
+	whData := discord.DiscordParams{
+		Embeds: []discord.Embed{
+			{
+				Author: discord.Author{
+					Name:    "Hypemedia Monitors",
+					IconURL: "https://media.discordapp.net/attachments/906886120502075403/1095465707690524753/hypemedialov2.jpg?width=1170&height=1170",
+				},
+				Title: product.Name,
+				Color: 16776975,
+				Url:   fmt.Sprintf("https://www.sizeofficial.it/product/hm/%s/", product.Sku),
+				Footer: discord.Footer{
+					Text: "Hypemedia Monitors",
+				},
+				Fields: []discord.Field{
+					{
+						Name:   "Name",
+						Value:  product.Name,
+						Inline: true,
+					},
+					{
+						Name:   "Sku",
+						Value:  product.Sku,
+						Inline: true,
+					},
+					{
+						Name:   "Price",
+						Value:  product.Price,
+						Inline: true,
+					},
+					{
+						Name:   "Sizes",
+						Value:  sizeMessage,
+						Inline: false,
+					},
+				},
+				Thumbnail: discord.Thumbnail{
+					URL: product.Image,
+				},
+			},
+		},
+	}
+
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1125118168101298257/2ZkO_w4XxzX9_1P1xiVVmxJAniwlcXgEztl70O2-KZMmkHwI_5mNc4UwT2tf1M6bNNO5", whData)
+	//err := discord.PostWebhook("https://discord.com/api/webhooks/1124657248522752091/LZC0u58A4FvxTLIiV8PL4dow5wRfslch_AVM72c8SqYdmeOnDRA_FYwWUmSN5OccdXIX", whData)
+	if err != nil {
+		log.Error("An error occured while sending the webhook!", location)
+		fmt.Println(whData)
+		time.Sleep(5 * time.Second)
+		AdidasLog(product)
+	} else {
+		log.Success("Webhook sent", location)
+		return
+	}
+}
+
+func FootpatrolLog(product Product) {
+	var sizeMessage string = ""
+	for _, size := range product.Sizes {
+		sizeMessage = sizeMessage + fmt.Sprintf("%s - %s\n", size.Size, size.Value)
+	}
+	whData := discord.DiscordParams{
+		Embeds: []discord.Embed{
+			{
+				Author: discord.Author{
+					Name:    "Hypemedia Monitors",
+					IconURL: "https://media.discordapp.net/attachments/906886120502075403/1095465707690524753/hypemedialov2.jpg?width=1170&height=1170",
+				},
+				Title: product.Name,
+				Color: 16776975,
+				Url:   fmt.Sprintf("https://www.footpatrol.it/product/hm/%s///", product.Sku),
 				Footer: discord.Footer{
 					Text: "Hypemedia Monitors",
 				},
