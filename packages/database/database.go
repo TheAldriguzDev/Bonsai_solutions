@@ -199,6 +199,9 @@ func SendLog(product Product) {
 }
 
 func AdidasLog(product Product) {
+	if product.Color == "" {
+		product.Color = "None"
+	}
 	var sizeMessage string = ""
 	for _, size := range product.Sizes {
 		sizeMessage = sizeMessage + fmt.Sprintf("%s [%s]\n", size.Size, size.Value)
@@ -605,8 +608,8 @@ func SkateLog(product Product) {
 		},
 	}
 
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1124468356641206405/I0A0H1cFBTr0_XNEcC6RXGVjw5eIYZj8_njszBQMtyOL4t3JBR0L9jkoqYuzy3TJvwtY", whData)
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1124657248522752091/LZC0u58A4FvxTLIiV8PL4dow5wRfslch_AVM72c8SqYdmeOnDRA_FYwWUmSN5OccdXIX", whData)
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1104086275276951644/LXydWEdohhMoGBcG9Rx1Kzh7vGztwvCZkmpcFhDWMzN_CoTtUu1HxLekH039q79kXagG", whData)
+	//err := discord.PostWebhook("https://discord.com/api/webhooks/1124657248522752091/LZC0u58A4FvxTLIiV8PL4dow5wRfslch_AVM72c8SqYdmeOnDRA_FYwWUmSN5OccdXIX", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
