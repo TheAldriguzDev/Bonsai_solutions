@@ -1,5 +1,10 @@
 package size
 
+import (
+	"math/rand"
+	"time"
+)
+
 var sizeKeys = []string{
 	"78F4021E82C64DBA858F49E210192EE0",
 	"FB90965B96454DC7B246D78C7358D93B",

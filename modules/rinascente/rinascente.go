@@ -95,10 +95,15 @@ func InitRina() {
 		log.General("Monitoring...", location)
 		proxie, err := proxyManager.RandomProxy(proxyArr)
 		proxie = strings.ReplaceAll(proxie, "\r", "")
+		proxyData := strings.Split(strings.TrimSpace(proxie), ":")
+		proxyUrl := fmt.Sprintf("http://%s:%s@%s:%s", proxyData[2], proxyData[3], proxyData[0], proxyData[1])
 		if err != nil {
 			log.Error(err.Error(), location)
 		} else {
-			module.httpClient.SetProxy(proxie)
+			err = module.httpClient.SetProxy(proxyUrl)
+			if err != nil {
+				log.Error(err.Error(), location)
+			}
 			module.Proxy = proxie
 		}
 

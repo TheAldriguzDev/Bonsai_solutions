@@ -2,29 +2,11 @@
 	"products": [
 		{
 			"site": "SkateDeluxe",
-			"sku": "162813",
-			"name": "Skateboarding Campus 00s",
-			"price": "109.9",
-			"image": "https://cdn.skatedeluxe.com/thumb/6qDgopuS44Y1uCsjGreoStxfjyA=/fit-in/300x350/filters:fill(white):brightness(-4)/product/162813-0-adidas-SkateboardingCampus00s.jpg",
-			"sizes": [
-				{
-					"size": "US 14",
-					"value": "IN_STOCK"
-				}
-			],
-			"color": "None"
-		},
-		{
-			"site": "SkateDeluxe",
 			"sku": "162821",
 			"name": "Skateboarding Campus 00s",
-			"price": "109.9",
+			"price": "100",
 			"image": "https://cdn.skatedeluxe.com/thumb/YZgYANXLdqRcgkw8bPLD3ezuYxU=/fit-in/300x350/filters:fill(white):brightness(-4)/product/162821-0-adidas-SkateboardingCampus00s.jpg",
 			"sizes": [
-				{
-					"size": "US 9,5",
-					"value": "IN_STOCK"
-				},
 				{
 					"size": "US 10",
 					"value": "IN_STOCK"
@@ -39,20 +21,6 @@
 				},
 				{
 					"size": "US 14",
-					"value": "IN_STOCK"
-				}
-			],
-			"color": "None"
-		},
-		{
-			"site": "SkateDeluxe",
-			"sku": "166117",
-			"name": "Skateboarding Campus 00s",
-			"price": "109.9",
-			"image": "https://cdn.skatedeluxe.com/thumb/Gn_bZhtHifk2JzYtYEe_uNlIm1g=/fit-in/300x350/filters:fill(white):brightness(-4)/product/166117-0-adidas-SkateboardingCampus00s.jpg",
-			"sizes": [
-				{
-					"size": "US 12",
 					"value": "IN_STOCK"
 				}
 			],

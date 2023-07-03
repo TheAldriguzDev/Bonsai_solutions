@@ -34,7 +34,7 @@ func InitTls(proxy string) (skateSession, error) {
 	jar := tls_client.NewCookieJar(jarOptions...)
 
 	options := []tls_client.HttpClientOption{
-		tls_client.WithTimeoutSeconds(10),
+		tls_client.WithTimeoutSeconds(30),
 		tls_client.WithClientProfile(tls_client.Chrome_112),
 		tls_client.WithNotFollowRedirects(),
 		tls_client.WithCookieJar(jar), // create cookieJar instance and pass it as argument
@@ -120,10 +120,15 @@ func InitSkate() {
 		log.General("Monitoring...", location)
 		proxie, err := proxyManager.RandomProxy(proxyArr)
 		proxie = strings.ReplaceAll(proxie, "\r", "")
+		proxyData := strings.Split(strings.TrimSpace(proxie), ":")
+		proxyUrl := fmt.Sprintf("http://%s:%s@%s:%s", proxyData[2], proxyData[3], proxyData[0], proxyData[1])
 		if err != nil {
 			log.Error(err.Error(), location)
 		} else {
-			module.httpClient.SetProxy(proxie)
+			err = module.httpClient.SetProxy(proxyUrl)
+			if err != nil {
+				log.Error(err.Error(), location)
+			}
 			module.Proxy = proxie
 		}
 
@@ -200,7 +205,7 @@ func (skate *skateSession) GetToken() (string, error) {
 }
 
 func (skate *skateSession) SearchProducts() error {
-	url := "https://www.skatedeluxe.com/api2/search?q=campus%2000"
+	url := "https://www.skatedeluxe.com/api2/search?q=campus"
 	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("%s&token=%s", url, skate.AuthToken), nil)
 
 	if err != nil {

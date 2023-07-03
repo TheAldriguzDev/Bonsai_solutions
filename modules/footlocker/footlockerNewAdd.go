@@ -98,13 +98,17 @@ func InitFootlocker() {
 		cid, err = module.GenerateCid()
 
 		if err != nil {
-			log.Error(err.Error(), location)
 			proxie, err := proxyManager.RandomProxy(proxyArr)
 			proxie = strings.ReplaceAll(proxie, "\r", "")
+			proxyData := strings.Split(strings.TrimSpace(proxie), ":")
+			proxyUrl := fmt.Sprintf("http://%s:%s@%s:%s", proxyData[2], proxyData[3], proxyData[0], proxyData[1])
 			if err != nil {
 				log.Error(err.Error(), location)
 			} else {
-				module.httpClient.SetProxy(proxie)
+				err = module.httpClient.SetProxy(proxyUrl)
+				if err != nil {
+					log.Error(err.Error(), location)
+				}
 				module.Proxy = proxie
 			}
 			time.Sleep(10 * time.Second)
@@ -115,10 +119,15 @@ func InitFootlocker() {
 			log.Error("Error while getting the cid!", location)
 			proxie, err := proxyManager.RandomProxy(proxyArr)
 			proxie = strings.ReplaceAll(proxie, "\r", "")
+			proxyData := strings.Split(strings.TrimSpace(proxie), ":")
+			proxyUrl := fmt.Sprintf("http://%s:%s@%s:%s", proxyData[2], proxyData[3], proxyData[0], proxyData[1])
 			if err != nil {
 				log.Error(err.Error(), location)
 			} else {
-				module.httpClient.SetProxy(proxie)
+				err = module.httpClient.SetProxy(proxyUrl)
+				if err != nil {
+					log.Error(err.Error(), location)
+				}
 				module.Proxy = proxie
 			}
 			time.Sleep(10 * time.Second)
@@ -135,10 +144,15 @@ func InitFootlocker() {
 		log.General("Monitoring...", location)
 		proxie, err := proxyManager.RandomProxy(proxyArr)
 		proxie = strings.ReplaceAll(proxie, "\r", "")
+		proxyData := strings.Split(strings.TrimSpace(proxie), ":")
+		proxyUrl := fmt.Sprintf("http://%s:%s@%s:%s", proxyData[2], proxyData[3], proxyData[0], proxyData[1])
 		if err != nil {
 			log.Error(err.Error(), location)
 		} else {
-			module.httpClient.SetProxy(proxie)
+			err = module.httpClient.SetProxy(proxyUrl)
+			if err != nil {
+				log.Error(err.Error(), location)
+			}
 			module.Proxy = proxie
 		}
 
@@ -162,7 +176,7 @@ func (ftl *footlockerSession) GetProducts() error {
 		return err
 	}
 
-	//newCookie := ftl.GetDataDome()
+	newCookie := ftl.GetDataDome()
 
 	req.Header = http.Header{
 		"Host":             {ftl.Host},
@@ -180,14 +194,14 @@ func (ftl *footlockerSession) GetProducts() error {
 		"Pragma":           {"no-cache"},
 		"Cache-Control":    {"no-cache"},
 		"Te":               {"trailers"},
-		//"cookie":           {"datadome=" + newCookie},
+		"cookie":           {"datadome=" + newCookie},
 	}
 
-	// cookie := &http.Cookie{
-	// 	Name:   "datadome",
-	// 	Value:  newCookie,
-	// 	MaxAge: 604800,
-	// }
+	cookie := &http.Cookie{
+		Name:   "datadome",
+		Value:  newCookie,
+		MaxAge: 604800,
+	}
 
 	// Modify a cookie value
 	cookies := ftl.httpClient.GetCookies(req.URL)
@@ -198,8 +212,8 @@ func (ftl *footlockerSession) GetProducts() error {
 		}
 	}
 
-	// ftl.httpClient.SetCookies(req.URL, cookies)
-	// req.AddCookie(cookie)
+	ftl.httpClient.SetCookies(req.URL, cookies)
+	req.AddCookie(cookie)
 
 	res, err := ftl.httpClient.Do(req)
 
