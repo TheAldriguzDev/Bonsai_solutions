@@ -182,10 +182,12 @@ func (mana *manaSession) ParseSearch(data SearchRes) error {
 	var mu sync.Mutex
 
 	for _, product := range data.Result.Product.Data {
-		wg.Add(1)
 
-		go mana.GetProductInfo(product, &productList, &wg, &mu)
+		if strings.Contains(strings.ToLower(product.Name), "campus") {
+			wg.Add(1)
 
+			go mana.GetProductInfo(product, &productList, &wg, &mu)
+		}
 	}
 
 	wg.Wait()

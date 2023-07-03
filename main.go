@@ -38,7 +38,7 @@ func main() {
 	log.General("9 - Size", location)
 	log.General("10 - Footpatrol", location)
 	//log.General("999 - AIO sites [Soon]", location)
-	fmt.Printf(log.Colors.DarkGrey+"\r[%s] [%s] >>> "+log.Colors.Reset, location, log.GetTime())
+	log.General(">>> ", location)
 
 	if _, err := fmt.Scan(&selection); err != nil || selection < 0 || selection > 1000 {
 		fmt.Printf(log.Colors.Red+"\r[%s] [%s] Wrong input! \n"+log.Colors.Reset, location, log.GetTime())
