@@ -206,7 +206,8 @@ func (mesh *meshSession) ParseSearch(searchData SearchRes) error {
 func (mesh *meshSession) GetProduct(product Product, productList *[]database.Product, wg *sync.WaitGroup, mu *sync.Mutex) error {
 	defer wg.Done()
 
-	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("https://prod.jdgroupmesh.cloud/stores/jdsportsit/products/%s?api_key=%s", product.SKU, getRandomString(jdKeys)), nil)
+	apiKey := getRandomString(jdKeys)
+	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("https://prod.jdgroupmesh.cloud/stores/jdsportsit/products/%s?api_key=%s", product.SKU, apiKey), nil)
 
 	if err != nil {
 		return err
@@ -276,6 +277,21 @@ func (mesh *meshSession) GetProduct(product Product, productList *[]database.Pro
 	err = json.Unmarshal(body, &productRes)
 
 	if err != nil {
+		// This means new add 99%
+		sizes := []database.Size{}
+		tempProduct := database.Product{
+			Site:  "JD",
+			Sku:   product.SKU,
+			Name:  product.ProductName,
+			Price: product.Price.Amount,
+			Image: product.MainImage,
+			Color: product.Colour,
+			Sizes: sizes,
+		}
+		mu.Lock()
+		*productList = append(*productList, tempProduct)
+		mu.Unlock()
+
 		log.Error(err.Error(), location)
 		return err
 	}

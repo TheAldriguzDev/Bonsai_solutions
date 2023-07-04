@@ -9,6 +9,7 @@ import (
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/adidas"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/bootz"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/footlocker"
+	ftlkiller "github.com/TheAldriguzDev/Bonsai_solutions/modules/ftlKiller"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/manashop"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/mesh/footpatrol"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/mesh/jd"
@@ -39,6 +40,7 @@ func main() {
 	log.General("9 - Size", location)
 	log.General("10 - Footpatrol", location)
 	log.General("11 - Sotf", location)
+	log.General("12 - Ftl killer", location)
 	//log.General("999 - AIO sites [Soon]", location)
 	fmt.Printf(log.Colors.DarkGrey+"\r[%s] [%s] >>> "+log.Colors.Reset, location, log.GetTime())
 
@@ -81,6 +83,9 @@ func main() {
 		break
 	case 11:
 		sotf.InitSotf()
+		break
+	case 12:
+		ftlkiller.InitFootlocker()
 		break
 	case 999:
 		var wg sync.WaitGroup
