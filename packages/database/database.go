@@ -823,7 +823,7 @@ func FootpatrolLog(product Product) {
 func SotfLog(product Product) {
 	var sizeMessage string = ""
 	for _, size := range product.Sizes {
-		sizeMessage = sizeMessage + fmt.Sprintf("%s - %s\n", size.Size, size.Value)
+		sizeMessage = sizeMessage + fmt.Sprintf("%s\n", size.Size)
 	}
 	whData := discord.DiscordParams{
 		Embeds: []discord.Embed{
@@ -862,7 +862,7 @@ func SotfLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1125552140392349756/arRFpsin9NCcW4dktil1I7TaLj7RoVZRckmSRPOHfyBjTwhZiFpSV-i7PDx5BYpKVWlY", whData)
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1124468356641206405/I0A0H1cFBTr0_XNEcC6RXGVjw5eIYZj8_njszBQMtyOL4t3JBR0L9jkoqYuzy3TJvwtY", whData)
 	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125158035313152070/YpwWM9a8cCrMz8oL3AWY-WMH18gHeNVooQi0Hd0_VXCmizPDlvBxQ77hLzfah4rXHa76", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
@@ -922,8 +922,8 @@ func FtlKiller(product Product) {
 		},
 	}
 
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1116419327931986022/a7aZWXwSff3MNaeUPcWlWruwZd6c_xhRqLnl4YV9ECjBpaltnwTJohVe5hX5znMqn_MN", whData)
 	//err := discord.PostWebhook("https://discord.com/api/webhooks/1119684786529779742/kwvf9VL0T-pmSh8M9juBBJSBfRS_zMdvSEquM8xSLlqoACcRJgPDSHSpiZbelzPu3qGN", whData)
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1102721637402542200/WOVrtJIyuya4OarY9j0pYwOf6IDXAQT8SlChIhbrXmlCwupT4sovFgEzSu7ThcNhSBdm", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)

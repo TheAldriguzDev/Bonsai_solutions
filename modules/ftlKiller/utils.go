@@ -2,11 +2,8 @@ package ftlkiller
 
 import (
 	"strconv"
-	"strings"
 	"time"
 
-	"github.com/TheAldriguzDev/Bonsai_solutions/packages/log"
-	"github.com/TheAldriguzDev/Bonsai_solutions/solvers/datadome"
 	http "github.com/bogdanfinn/fhttp"
 	"github.com/google/uuid"
 )
@@ -51,34 +48,4 @@ func GetTimeStamp() string {
 	timestamp := currentTime.UnixNano() / int64(time.Millisecond)
 	cacheBuster := strconv.Itoa(int(timestamp))
 	return cacheBuster
-}
-
-func (ftl *footlockerSession) GetDataDome() string {
-	var ddStep bool = false
-	var ddRes datadome.DDResponse
-
-	ddData := datadome.GenerateData{
-		DataDomeKey:     "A55FBF4311ED6F1BF9911EB71931D5",
-		DataDomeVersion: "4.10.2",
-		Cid:             ftl.Cid,
-		Refer:           "https://www.footlocker.it/",
-		UserAgent:       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
-		Proxy:           ftl.Proxy,
-	}
-
-	for !ddStep {
-		ddResTemp, err := datadome.GetCookie(ddData)
-
-		if err != nil {
-			log.Error(err.Error(), location)
-			time.Sleep(5 * time.Second)
-			continue
-		}
-
-		ddRes = ddResTemp
-		ddStep = true
-	}
-
-	newCookie := strings.Split(strings.Split(ddRes.Cookie, ";")[0], "=")[1]
-	return newCookie
 }

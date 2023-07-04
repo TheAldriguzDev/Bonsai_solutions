@@ -151,7 +151,7 @@ func (zalando *zalandoSession) SearchProducts(id string) error {
 			AepNumberOfEntities:                   7,
 			SegmentGatedLogoWidth:                 100,
 			CategoryImageWidth:                    300,
-			First:                                 24,
+			First:                                 1000,
 			ShouldIncludeOmnibusPrice:             true,
 			GardenExperienceLogoWidth:             300,
 			IsFirstPage:                           true,
@@ -176,7 +176,7 @@ func (zalando *zalandoSession) SearchProducts(id string) error {
 				RangeFilters: []RangeFilter{
 					{
 						Key:     "prices",
-						Minimum: 99,
+						Minimum: 20,
 						Maximum: 159,
 					},
 				},
