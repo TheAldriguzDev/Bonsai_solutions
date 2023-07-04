@@ -204,6 +204,9 @@ func SendLog(product Product) {
 	case "Footpatrol":
 		FootpatrolLog(product)
 		break
+	case "Sotf":
+		SotfLog(product)
+		break
 	}
 }
 
@@ -799,6 +802,61 @@ func FootpatrolLog(product Product) {
 
 	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125118168101298257/2ZkO_w4XxzX9_1P1xiVVmxJAniwlcXgEztl70O2-KZMmkHwI_5mNc4UwT2tf1M6bNNO5", whData)
 	err := discord.PostWebhook("https://discord.com/api/webhooks/1125158035313152070/YpwWM9a8cCrMz8oL3AWY-WMH18gHeNVooQi0Hd0_VXCmizPDlvBxQ77hLzfah4rXHa76", whData)
+	if err != nil {
+		log.Error("An error occured while sending the webhook!", location)
+		fmt.Println(whData)
+		time.Sleep(5 * time.Second)
+		AdidasLog(product)
+	} else {
+		log.Success("Webhook sent", location)
+		return
+	}
+}
+
+func SotfLog(product Product) {
+	var sizeMessage string = ""
+	for _, size := range product.Sizes {
+		sizeMessage = sizeMessage + fmt.Sprintf("%s - %s\n", size.Size, size.Value)
+	}
+	whData := discord.DiscordParams{
+		Embeds: []discord.Embed{
+			{
+				Author: discord.Author{
+					Name:    "Hypemedia Monitors",
+					IconURL: "https://media.discordapp.net/attachments/906886120502075403/1095465707690524753/hypemedialov2.jpg?width=1170&height=1170",
+				},
+				Title: product.Name,
+				Color: 16776975,
+				Url:   fmt.Sprintf("%s", product.Sku),
+				Footer: discord.Footer{
+					Text: "Hypemedia Monitors",
+				},
+				Fields: []discord.Field{
+					{
+						Name:   "Name",
+						Value:  product.Name,
+						Inline: true,
+					},
+					{
+						Name:   "Price",
+						Value:  product.Price,
+						Inline: true,
+					},
+					{
+						Name:   "Sizes",
+						Value:  sizeMessage,
+						Inline: false,
+					},
+				},
+				Thumbnail: discord.Thumbnail{
+					URL: product.Image,
+				},
+			},
+		},
+	}
+
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1125552140392349756/arRFpsin9NCcW4dktil1I7TaLj7RoVZRckmSRPOHfyBjTwhZiFpSV-i7PDx5BYpKVWlY", whData)
+	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125158035313152070/YpwWM9a8cCrMz8oL3AWY-WMH18gHeNVooQi0Hd0_VXCmizPDlvBxQ77hLzfah4rXHa76", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)

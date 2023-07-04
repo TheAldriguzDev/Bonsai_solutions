@@ -1,0 +1,38 @@
+{
+	"products": [
+		{
+			"site": "Sotf",
+			"sku": "https://www.sotf.com/it/adidas-originals/uomo/sneakers/sneakers-adidas-originals-campus-00s-hq8712-56233.html",
+			"name": "ADIDAS ORIGINALS UOMO",
+			"price": "€ 110,00 ",
+			"image": "https://www.sotf.com/upload/articoli/dettaglio/CAMPUS-00s-ADIDAS-ORIGINALS_56233_dettaglio.jpg",
+			"sizes": [
+				{
+					"size": "8.5",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "9",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "9.5",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "10",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "10.5",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "11",
+					"value": "IN_STOCK"
+				}
+			],
+			"color": "None"
+		}
+	]
+}

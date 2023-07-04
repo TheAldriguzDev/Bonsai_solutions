@@ -15,6 +15,7 @@ import (
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/mesh/size"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/rinascente"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/skatedeluxe"
+	"github.com/TheAldriguzDev/Bonsai_solutions/modules/sotf"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/zalando"
 	"github.com/TheAldriguzDev/Bonsai_solutions/packages/log"
 )
@@ -26,7 +27,7 @@ func main() {
 	//go protection.GetProcess("HM", "OCTA")
 
 	var selection int
-	log.General("Select an option: ", location)
+	fmt.Printf(log.Colors.DarkGrey+"\r[%s] [%s] Select an option: \n"+log.Colors.Reset, location, log.GetTime())
 	log.General("1 - Footlocker", location)
 	log.General("2 - Zalando", location)
 	log.General("3 - Adidas", location)
@@ -37,8 +38,9 @@ func main() {
 	log.General("8 - JD", location)
 	log.General("9 - Size", location)
 	log.General("10 - Footpatrol", location)
+	log.General("11 - Sotf", location)
 	//log.General("999 - AIO sites [Soon]", location)
-	log.General(">>> ", location)
+	fmt.Printf(log.Colors.DarkGrey+"\r[%s] [%s] >>> "+log.Colors.Reset, location, log.GetTime())
 
 	if _, err := fmt.Scan(&selection); err != nil || selection < 0 || selection > 1000 {
 		fmt.Printf(log.Colors.Red+"\r[%s] [%s] Wrong input! \n"+log.Colors.Reset, location, log.GetTime())
@@ -76,6 +78,9 @@ func main() {
 		break
 	case 10:
 		footpatrol.InitFootpatrol()
+		break
+	case 11:
+		sotf.InitSotf()
 		break
 	case 999:
 		var wg sync.WaitGroup

@@ -109,11 +109,11 @@ func InitMesh() {
 		err = module.SearchProducts()
 		if err != nil {
 			log.Error(err.Error(), location)
-			time.Sleep(7 * time.Second)
+			time.Sleep(15 * time.Second)
 			module, err = InitTls(proxie)
 			continue
 		}
-		time.Sleep(7 * time.Second)
+		time.Sleep(15 * time.Second)
 	}
 }
 

@@ -291,6 +291,20 @@ func (skate *skateSession) ParseSearch(res SearchResponse) error {
 func (skate skateSession) GetProduct(product Product, productList *[]database.Product, wg *sync.WaitGroup, mu *sync.Mutex) error {
 	defer wg.Done()
 
+	proxie, err := proxyManager.RandomProxy(skate.ProxyArr)
+	proxie = strings.ReplaceAll(proxie, "\r", "")
+	proxyData := strings.Split(strings.TrimSpace(proxie), ":")
+	proxyUrl := fmt.Sprintf("http://%s:%s@%s:%s", proxyData[2], proxyData[3], proxyData[0], proxyData[1])
+	if err != nil {
+		log.Error(err.Error(), location)
+	} else {
+		err = skate.httpClient.SetProxy(proxyUrl)
+		if err != nil {
+			log.Error(err.Error(), location)
+		}
+		skate.Proxy = proxie
+	}
+
 	if strings.Contains(product.ProductsName, "00") && strings.Contains(strings.ToLower(product.ProductsName), "campus") {
 		proxie, err := proxyManager.RandomProxy(skate.ProxyArr)
 		proxie = strings.ReplaceAll(proxie, "\r", "")
@@ -327,6 +341,7 @@ func (skate skateSession) GetProduct(product Product, productList *[]database.Pr
 		res, err := skate.httpClient.Do(req)
 
 		if err != nil {
+			log.Error(err.Error(), location)
 			return err
 		}
 
@@ -335,6 +350,7 @@ func (skate skateSession) GetProduct(product Product, productList *[]database.Pr
 		}
 
 		if res.StatusCode != 200 {
+			log.Error("Get product bad status code!", location)
 			return fmt.Errorf("Get product bad status code: [%v]", res.StatusCode)
 		}
 
@@ -342,6 +358,7 @@ func (skate skateSession) GetProduct(product Product, productList *[]database.Pr
 		doc, err := goquery.NewDocumentFromReader(res.Body)
 
 		if err != nil {
+			log.Error(err.Error(), location)
 			return err
 		}
 
@@ -363,7 +380,7 @@ func (skate skateSession) GetProduct(product Product, productList *[]database.Pr
 			Site:  "SkateDeluxe",
 			Sku:   strconv.Itoa(product.ProductsID),
 			Name:  product.ProductsName,
-			Price: strconv.FormatFloat(product.ProductsPriceCalced, 'f', -1, 64),
+			Price: strconv.FormatFloat(product.ProductsPriceOld, 'f', -1, 64),
 			Image: product.ProductImages[0],
 			Sizes: sizes,
 			Color: "None",

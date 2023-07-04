@@ -122,7 +122,7 @@ func InitAdidas() {
 func (adidas *adidasSession) SearchProducts() error {
 	var searchData SearchData
 
-	url := "https://api.3stripes.net/gw-api/v2/products/search?experiment_product_data=A&limit=24&page=1&query=Campus%2000"
+	url := "https://api.3stripes.net/gw-api/v2/products/search?experiment_product_data=A&limit=1000&page=1&query=Campus%2000"
 	searchUrl := fmt.Sprintf("%s?%s", url, GetTimeStamp())
 
 	req, err := http.NewRequest(http.MethodGet, searchUrl, nil)

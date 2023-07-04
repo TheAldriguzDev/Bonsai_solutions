@@ -207,7 +207,7 @@ func (ftl *footlockerSession) GetProducts() error {
 	cookies := ftl.httpClient.GetCookies(req.URL)
 	for _, cookie := range cookies {
 		if cookie.Name == "datadome" {
-			fmt.Println(cookie.Value)
+			cookie.Value = newCookie
 			break
 		}
 	}

@@ -265,7 +265,7 @@ func (zalando *zalandoSession) ParseSearch(respData SearchResponse) error {
 	var mu sync.Mutex
 
 	for _, product := range respData.Data.Collection.Entities.Nodes {
-		if product.SKU != "AD115O1JQ-C12" {
+		if product.SKU != "AD115O1JQ-C12" && product.SKU != "AD115O1J6-B11" && product.SKU != "AD115O1J6-Q11" {
 			wg.Add(1)
 
 			go zalando.GetInfoUtils(product, &productList, &wg, &mu)
