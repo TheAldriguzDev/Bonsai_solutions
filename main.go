@@ -3,13 +3,14 @@ package main
 import (
 	"fmt"
 	"os"
-	"sync"
 	"time"
 
+	"github.com/TheAldriguzDev/Bonsai_solutions/api"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/adidas"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/bootz"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/footlocker"
-	ftlkiller "github.com/TheAldriguzDev/Bonsai_solutions/modules/ftlKiller"
+	ftlNewAdd "github.com/TheAldriguzDev/Bonsai_solutions/modules/footlockerNewAdd"
+	ftlRestock "github.com/TheAldriguzDev/Bonsai_solutions/modules/footlockerRestock"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/manashop"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/mesh/footpatrol"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/mesh/jd"
@@ -40,7 +41,9 @@ func main() {
 	log.General("9 - Size", location)
 	log.General("10 - Footpatrol", location)
 	log.General("11 - Sotf", location)
-	log.General("12 - Ftl killer", location)
+	log.General("12 - Ftl New Add", location)
+	log.General("13 - Ftl Restock", location)
+	log.General("999 - Start apis", location)
 	//log.General("999 - AIO sites [Soon]", location)
 	fmt.Printf(log.Colors.DarkGrey+"\r[%s] [%s] >>> "+log.Colors.Reset, location, log.GetTime())
 
@@ -73,7 +76,7 @@ func main() {
 		skatedeluxe.InitSkate()
 		break
 	case 8:
-		jd.InitMesh()
+		jd.InitMeshNewAdd()
 		break
 	case 9:
 		size.InitSize()
@@ -85,23 +88,13 @@ func main() {
 		sotf.InitSotf()
 		break
 	case 12:
-		ftlkiller.InitFootlocker()
+		ftlNewAdd.InitFootlocker()
+		break
+	case 13:
+		ftlRestock.InitRestock()
 		break
 	case 999:
-		var wg sync.WaitGroup
-		wg.Add(2)
-
-		go func() {
-			defer wg.Done()
-			rinascente.InitRina()
-		}()
-
-		go func() {
-			defer wg.Done()
-			bootz.InitBootz()
-		}()
-
-		wg.Wait()
+		api.ApiServer()
 	default:
 		log.Error("No module found!", "Error")
 		os.Exit(0)

@@ -18,7 +18,7 @@ import (
 	tls_client "github.com/bogdanfinn/tls-client"
 )
 
-var location string = "Bootz"
+var location string = "Sotf"
 
 func InitTls(proxy string) (sotfSession, error) {
 	proxy = strings.ReplaceAll(proxy, "\r", "")
@@ -271,6 +271,10 @@ func (sotf *sotfSession) GetProduct(url string, productList *[]database.Product,
 		})
 	})
 
+	if len(sizes) == 0 {
+		return nil
+	}
+
 	tempProduct := database.Product{
 		Site:  "Sotf",
 		Sku:   url,
@@ -281,9 +285,11 @@ func (sotf *sotfSession) GetProduct(url string, productList *[]database.Product,
 		Color: "None",
 	}
 
-	mu.Lock()
-	*productList = append(*productList, tempProduct)
-	mu.Unlock()
+	if len(sizes) != 0 {
+		mu.Lock()
+		*productList = append(*productList, tempProduct)
+		mu.Unlock()
+	}
 
 	return nil
 }

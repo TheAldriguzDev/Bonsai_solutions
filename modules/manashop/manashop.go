@@ -184,9 +184,11 @@ func (mana *manaSession) ParseSearch(data SearchRes) error {
 	for _, product := range data.Result.Product.Data {
 
 		if strings.Contains(strings.ToLower(product.Name), "campus") {
-			wg.Add(1)
+			if checkSku(product.URL) {
+				wg.Add(1)
 
-			go mana.GetProductInfo(product, &productList, &wg, &mu)
+				go mana.GetProductInfo(product, &productList, &wg, &mu)
+			}
 		}
 	}
 
@@ -198,6 +200,20 @@ func (mana *manaSession) ParseSearch(data SearchRes) error {
 	}
 
 	return nil
+}
+
+func checkSku(sku string) bool {
+	badSku := []string{
+		"https://manashop.club/scarpe-campus-00s-hq8705.html",
+		"https://manashop.club/scarpe-campus-00s-hq4409-old.html",
+		"https://manashop.club/scarpe-campus-00s-hq8710.html",
+	}
+	for _, forbiddenSku := range badSku {
+		if sku == forbiddenSku {
+			return false
+		}
+	}
+	return true
 }
 
 func (mana *manaSession) GetProductInfo(product Data, productList *[]database.Product, wg *sync.WaitGroup, mu *sync.Mutex) error {
@@ -306,9 +322,11 @@ func (mana *manaSession) GetProductInfo(product Data, productList *[]database.Pr
 		Sizes: sizes,
 	}
 
-	mu.Lock()
-	*productList = append(*productList, tempProduct)
-	mu.Unlock()
+	if len(sizes) != 0 {
+		mu.Lock()
+		*productList = append(*productList, tempProduct)
+		mu.Unlock()
+	}
 
 	return nil
 }

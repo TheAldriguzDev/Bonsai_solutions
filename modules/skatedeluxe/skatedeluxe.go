@@ -380,15 +380,17 @@ func (skate skateSession) GetProduct(product Product, productList *[]database.Pr
 			Site:  "SkateDeluxe",
 			Sku:   strconv.Itoa(product.ProductsID),
 			Name:  product.ProductsName,
-			Price: strconv.FormatFloat(product.ProductsPriceOld, 'f', -1, 64),
+			Price: "100",
 			Image: product.ProductImages[0],
 			Sizes: sizes,
 			Color: "None",
 		}
 
-		mu.Lock()
-		*productList = append(*productList, tempProduct)
-		mu.Unlock()
+		if len(sizes) != 0 {
+			mu.Lock()
+			*productList = append(*productList, tempProduct)
+			mu.Unlock()
+		}
 	}
 
 	return nil

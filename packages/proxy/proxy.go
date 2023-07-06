@@ -1,6 +1,7 @@
 package proxyManager
 
 import (
+	"errors"
 	"io/ioutil"
 	"math/rand"
 	"strings"
@@ -20,6 +21,10 @@ func ReadProxyFile(path string) ([]string, error) {
 }
 
 func RandomProxy(proxyList []string) (string, error) {
+	if len(proxyList) == 0 {
+		return "", errors.New("No proxy has been found!")
+	}
+
 	rand.Seed(time.Now().UnixNano())
 	randomIndex := rand.Intn(len(proxyList))
 

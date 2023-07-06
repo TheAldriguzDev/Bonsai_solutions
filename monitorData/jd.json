@@ -2,15 +2,6 @@
 	"products": [
 		{
 			"site": "JD",
-			"sku": "19396200_jdsportsit",
-			"name": "Campus Junior",
-			"price": "70.00",
-			"image": "https://i8.amplience.net/t/jpl/jdit_product_list?plu=jd_619643_al\u0026qlt=85\u0026qlt=92",
-			"sizes": [],
-			"color": "rosa"
-		},
-		{
-			"site": "JD",
 			"sku": "19573513_jdsportsit",
 			"name": "Campus 00s",
 			"price": "100.00",

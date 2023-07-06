@@ -215,7 +215,9 @@ func (rina *rinascenteSession) ParseResp(searchResp AlgoliaSearchResponse) []dat
 			Sizes: sizes,
 		}
 
-		productList = append(productList, tempProduct)
+		if len(sizes) != 0 {
+			productList = append(productList, tempProduct)
+		}
 	}
 
 	return productList

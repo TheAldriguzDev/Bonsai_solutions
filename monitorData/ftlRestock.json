@@ -1,0 +1,132 @@
+{
+	"products": [
+		{
+			"site": "Footlocker Restock",
+			"sku": "314311003504",
+			"name": "adidas Campus - Uomo Scarpe",
+			"price": "€ 109,99",
+			"image": "https://images.footlocker.com/is/image/FLEU/314311003504_01?wid=520\u0026hei=520\u0026fmt=png-alpha",
+			"sizes": [
+				{
+					"size": "41 1/3",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "42",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "42 2/3",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "43 1/3",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "44",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "45 1/3",
+					"value": "IN_STOCK"
+				}
+			],
+			"color": "Blu"
+		},
+		{
+			"site": "Footlocker Restock",
+			"sku": "314310886404",
+			"name": "adidas Campus - Uomo Scarpe",
+			"price": "€ 109,99",
+			"image": "https://images.footlocker.com/is/image/FLEU/314310886404_01?wid=520\u0026hei=520\u0026fmt=png-alpha",
+			"sizes": [
+				{
+					"size": "42",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "43 1/3",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "44",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "45 1/3",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "48",
+					"value": "IN_STOCK"
+				}
+			],
+			"color": "Grigio"
+		},
+		{
+			"site": "Footlocker Restock",
+			"sku": "314311015904",
+			"name": "adidas Campus - Uomo Scarpe",
+			"price": "€ 109,99",
+			"image": "https://images.footlocker.com/is/image/FLEU/314311015904_01?wid=520\u0026hei=520\u0026fmt=png-alpha",
+			"sizes": [
+				{
+					"size": "42",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "42 2/3",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "45 1/3",
+					"value": "IN_STOCK"
+				}
+			],
+			"color": "Rosso"
+		},
+		{
+			"site": "Footlocker Restock",
+			"sku": "314311294004",
+			"name": "adidas Campus - Uomo Scarpe",
+			"price": "€ 109,99",
+			"image": "https://images.footlocker.com/is/image/FLEU/314311294004_01?wid=520\u0026hei=520\u0026fmt=png-alpha",
+			"sizes": [
+				{
+					"size": "41 1/3",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "42",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "42 2/3",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "43 1/3",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "44",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "44 2/3",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "45 1/3",
+					"value": "IN_STOCK"
+				},
+				{
+					"size": "46 2/3",
+					"value": "IN_STOCK"
+				}
+			],
+			"color": "Nero"
+		}
+	]
+}

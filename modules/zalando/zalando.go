@@ -302,9 +302,11 @@ func (zalando *zalandoSession) GetInfoUtils(product NodeData, productList *[]dat
 	tempProduct.Sizes = info.Sizes
 	tempProduct.Color = info.Color
 
-	mu.Lock()
-	*productList = append(*productList, tempProduct)
-	mu.Unlock()
+	if len(tempProduct.Sizes) != 0 {
+		mu.Lock()
+		*productList = append(*productList, tempProduct)
+		mu.Unlock()
+	}
 }
 
 func (zalando *zalandoSession) GetStock(sku string) (UpdateProduct, error) {

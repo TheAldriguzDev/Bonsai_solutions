@@ -205,8 +205,23 @@ func (adidas *adidasSession) parseSearch(search SearchData) error {
 	return nil
 }
 
-func (adidas *adidasSession) getInfoUtils(product Product, productList *[]database.Product, wg *sync.WaitGroup, mu *sync.Mutex) {
+func (adidas adidasSession) getInfoUtils(product Product, productList *[]database.Product, wg *sync.WaitGroup, mu *sync.Mutex) {
 	defer wg.Done()
+
+	// We rotate proxy to avoid bans
+	proxie, err := proxyManager.RandomProxy(adidas.ProxyArr)
+	proxie = strings.ReplaceAll(proxie, "\r", "")
+	proxyData := strings.Split(strings.TrimSpace(proxie), ":")
+	proxyUrl := fmt.Sprintf("http://%s:%s@%s:%s", proxyData[2], proxyData[3], proxyData[0], proxyData[1])
+	if err != nil {
+		log.Error(err.Error(), location)
+	} else {
+		err = adidas.httpClient.SetProxy(proxyUrl)
+		if err != nil {
+			log.Error(err.Error(), location)
+		}
+		adidas.Proxy = proxie
+	}
 
 	tempProduct := database.Product{
 		Site:  "Adidas",
@@ -225,9 +240,11 @@ func (adidas *adidasSession) getInfoUtils(product Product, productList *[]databa
 
 	tempProduct.Sizes = sizes
 
-	mu.Lock()
-	*productList = append(*productList, tempProduct)
-	mu.Unlock()
+	if len(sizes) != 0 {
+		mu.Lock()
+		*productList = append(*productList, tempProduct)
+		mu.Unlock()
+	}
 }
 
 func (adidas *adidasSession) getProductInfo(sku string) ([]database.Size, error) {

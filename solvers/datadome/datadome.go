@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/url"
+	"strconv"
 	"strings"
 	"time"
 
@@ -117,8 +118,9 @@ func GetCookie(genData GenerateData) (DDResponse, error) {
 
 func (dd *DataDomeSession) GetCid(genData GenerateData) (string, error) {
 	fmt.Println("Generating cid for: " + genData.Refer)
+	homePageUrl := fmt.Sprintf("https://www.footlocker.%s/?%s", "it", GetTimeStamp())
 
-	req, err := http.NewRequest(http.MethodGet, genData.Refer, nil)
+	req, err := http.NewRequest(http.MethodGet, homePageUrl, nil)
 
 	if err != nil {
 		fmt.Println(err)
@@ -126,17 +128,21 @@ func (dd *DataDomeSession) GetCid(genData GenerateData) (string, error) {
 	}
 
 	req.Header = http.Header{
-		"sec-ch-ua":          {"\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\""},
-		"sec-ch-ua-mobile":   {"?0"},
-		"user-agent":         {genData.UserAgent},
-		"sec-ch-ua-platform": {"\"macOS\""},
-		"accept":             {"*/*"},
-		"sec-fetch-site":     {"cross-site"},
-		"sec-fetch-mode":     {"no-cors"},
-		"sec-fetch-dest":     {"script"},
-		"referer":            {genData.Refer},
-		"accept-encoding":    {"gzip, deflate, br"},
-		"accept-language":    {"de-DE,de;q=0.9"},
+		"Host":             {"www.footlocker.it"},
+		"user-agent":       {dd.GenData.UserAgent},
+		"Accept":           {"application/json, text/javascript, */*; q=0.01"},
+		"Accept-Language":  {"de-DE,de;q=0.9"},
+		"Accept-Encoding":  {"gzip, deflate"},
+		"Content-Type":     {"application/x-www-form-urlencoded"},
+		"X-Requested-With": {"XMLHttpRequest"},
+		"Origin":           {homePageUrl},
+		"Referer":          {homePageUrl},
+		"Sec-Fetch-Dest":   {"empty"},
+		"Sec-Fetch-Mode":   {"cors"},
+		"Sec-Fetch-Site":   {"same-origin"},
+		"Pragma":           {"no-cache"},
+		"Cache-Control":    {"no-cache"},
+		"Te":               {"trailers"},
 	}
 
 	res, err := dd.httpClient.Do(req)
@@ -145,6 +151,8 @@ func (dd *DataDomeSession) GetCid(genData GenerateData) (string, error) {
 		fmt.Println(err)
 		return "", err
 	}
+
+	fmt.Println(res.StatusCode)
 
 	if res.StatusCode != 200 && res.StatusCode != 302 {
 		return "", fmt.Errorf("Bad status code!")
@@ -158,8 +166,6 @@ func (dd *DataDomeSession) GetCid(genData GenerateData) (string, error) {
 			break
 		}
 	}
-
-	fmt.Println(res.StatusCode)
 
 	return datadomeCookie.Value, err
 }
@@ -390,4 +396,11 @@ func (ddModule *DataDomeSession) RequestCookie() (DDResponse, error) {
 
 	json.Unmarshal(body, &ddRes)
 	return ddRes, nil
+}
+
+func GetTimeStamp() string {
+	currentTime := time.Now()
+	timestamp := currentTime.UnixNano() / int64(time.Millisecond)
+	cacheBuster := strconv.Itoa(int(timestamp))
+	return cacheBuster
 }

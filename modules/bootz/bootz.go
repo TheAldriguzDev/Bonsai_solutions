@@ -219,9 +219,11 @@ func (tls *bootzSession) GetInfoUtils(product database.Product, productList *[]d
 	tempProduct.Color = color
 	tempProduct.Sizes = sizes
 
-	mu.Lock()
-	*productList = append(*productList, tempProduct)
-	mu.Unlock()
+	if len(sizes) != 0 {
+		mu.Lock()
+		*productList = append(*productList, tempProduct)
+		mu.Unlock()
+	}
 }
 
 func (tls *bootzSession) GetSize(path string) ([]database.Size, string, error) {
