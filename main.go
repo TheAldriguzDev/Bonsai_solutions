@@ -38,11 +38,14 @@ func main() {
 	log.General("6 - Manashop", location)
 	log.General("7 - SkateDeluxe", location)
 	log.General("8 - JD", location)
-	log.General("9 - Size", location)
-	log.General("10 - Footpatrol", location)
-	log.General("11 - Sotf", location)
-	log.General("12 - Ftl New Add", location)
-	log.General("13 - Ftl Restock", location)
+	log.General("9 - JD restock", location)
+	log.General("10 - Size", location)
+	log.General("11 - Size Restock", location)
+	log.General("12 - Footpatrol", location)
+	log.General("13 - Footpatrol Restock", location)
+	log.General("14 - Sotf", location)
+	log.General("15 - Ftl New Add", location)
+	log.General("16 - Ftl Restock", location)
 	log.General("999 - Start apis", location)
 	//log.General("999 - AIO sites [Soon]", location)
 	fmt.Printf(log.Colors.DarkGrey+"\r[%s] [%s] >>> "+log.Colors.Reset, location, log.GetTime())
@@ -79,18 +82,27 @@ func main() {
 		jd.InitMeshNewAdd()
 		break
 	case 9:
-		size.InitSize()
+		jd.InitJdRestock()
 		break
 	case 10:
-		footpatrol.InitFootpatrol()
+		size.InitMeshNewAdd()
 		break
 	case 11:
-		sotf.InitSotf()
+		size.InitJdRestock()
 		break
 	case 12:
-		ftlNewAdd.InitFootlocker()
+		footpatrol.InitMeshNewAdd()
 		break
 	case 13:
+		footpatrol.InitJdRestock()
+		break
+	case 14:
+		sotf.InitSotf()
+		break
+	case 15:
+		ftlNewAdd.InitFootlocker()
+		break
+	case 16:
 		ftlRestock.InitRestock()
 		break
 	case 999:

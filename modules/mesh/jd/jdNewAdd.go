@@ -109,7 +109,6 @@ func (mesh *meshSession) RotateProxy() error {
 }
 
 func (mesh *meshSession) GetNewAdd() error {
-	fmt.Println(mesh.httpClient.GetProxy())
 	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("https://prod.jdgroupmesh.cloud/stores/jdsportsit/products/search?api_key=%s&max=%s&customerLoyalty=1&from=0&channel=iphone-app&debug=1&query=campus&locale=it", getRandomString(jdKeys), genNumber(24, 128)), nil)
 
 	if err != nil {

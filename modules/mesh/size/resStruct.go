@@ -36,33 +36,23 @@ type Price struct {
 // Product ep
 
 type ProductRes struct {
-	ID                string         `json:"id,omitempty"`
-	SKU               string         `json:"SKU,omitempty"`
-	Href              string         `json:"href,omitempty"`
-	TrackingSKU       string         `json:"trackingSKU,omitempty"`
-	Name              string         `json:"name,omitempty"`
-	BrandName         string         `json:"brandName,omitempty"`
-	MainImage         string         `json:"mainImage,omitempty"`
-	Price             Price          `json:"price,omitempty"`
-	StockStatus       string         `json:"stockStatus,omitempty"`
-	Colour            string         `json:"colour,omitempty"`
-	ColourDescription string         `json:"colourDescription,omitempty"`
-	Images            []string       `json:"images,omitempty"`
-	SortedOptions     []SortedOption `json:"sortedOptions,omitempty"`
-	URL               string         `json:"URL,omitempty"`
-	ProductName       string         `json:"productName,omitempty"`
+	SKU         string `json:"SKU"`
+	StockStatus string `json:"stockStatus"`
 }
 
 type SortedOption struct {
-	Name    string         `json:"name,omitempty"`
-	Product ProductDetails `json:"product,omitempty"`
+	Name    string     `json:"name"`
+	Product ProductRes `json:"product"`
 }
 
-type ProductDetails struct {
-	SKU               string `json:"SKU,omitempty"`
-	StockStatus       string `json:"stockStatus,omitempty"`
-	Colour            string `json:"colour,omitempty"`
-	ColourDescription string `json:"colourDescription,omitempty"`
-	UPC               string `json:"UPC,omitempty"`
-	Size              string `json:"size,omitempty"`
+type ItemData struct {
+	SKU           string         `json:"SKU"`
+	Href          string         `json:"href"`
+	Name          string         `json:"name"`
+	BrandName     string         `json:"brandName"`
+	MainImage     string         `json:"mainImage"`
+	Price         Price          `json:"price"`
+	Colour        string         `json:"colour"`
+	SortedOptions []SortedOption `json:"sortedOptions"`
+	URL           string         `json:"URL"`
 }

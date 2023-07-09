@@ -198,7 +198,7 @@ func SendLog(product Product) {
 	case "SkateDeluxe":
 		SkateLog(product)
 		break
-	case "JD":
+	case "JD Restock":
 		JDLog(product)
 		break
 	case "JD New":
@@ -700,12 +700,10 @@ func SkateLog(product Product) {
 
 func JDLog(product Product) {
 	var sizeMessage string = ""
+	var pidsMessage string = ""
 	for _, size := range product.Sizes {
-		sizeMessage = sizeMessage + fmt.Sprintf("%s - %s\n", size.Size, size.Value)
-	}
-
-	if sizeMessage == "" {
-		sizeMessage = "New add"
+		sizeMessage = sizeMessage + fmt.Sprintf("%s\n", size.Size)
+		pidsMessage = pidsMessage + fmt.Sprintf("%s\n", size.Value)
 	}
 	whData := discord.DiscordParams{
 		Embeds: []discord.Embed{
@@ -734,12 +732,17 @@ func JDLog(product Product) {
 					{
 						Name:   "Price",
 						Value:  product.Price,
-						Inline: true,
+						Inline: false,
 					},
 					{
 						Name:   "Sizes",
 						Value:  sizeMessage,
-						Inline: false,
+						Inline: true,
+					},
+					{
+						Name:   "Pids",
+						Value:  pidsMessage,
+						Inline: true,
 					},
 				},
 				Thumbnail: discord.Thumbnail{
@@ -749,8 +752,8 @@ func JDLog(product Product) {
 		},
 	}
 
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125118168101298257/2ZkO_w4XxzX9_1P1xiVVmxJAniwlcXgEztl70O2-KZMmkHwI_5mNc4UwT2tf1M6bNNO5", whData)
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1125118168101298257/2ZkO_w4XxzX9_1P1xiVVmxJAniwlcXgEztl70O2-KZMmkHwI_5mNc4UwT2tf1M6bNNO5", whData)
+	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)

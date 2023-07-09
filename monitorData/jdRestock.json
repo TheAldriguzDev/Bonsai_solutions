@@ -1,0 +1,34 @@
+{
+	"products": [
+		{
+			"site": "JD Restock",
+			"sku": "19573513_jdsportsit",
+			"name": "adidas Originals Campus 00s",
+			"price": "100.00",
+			"image": "https://i8.amplience.net/i/jpl/jd_656612_a?qlt=92",
+			"sizes": [
+				{
+					"size": "42",
+					"value": "19573513_jdsportsit.5476338"
+				},
+				{
+					"size": "43 1/3",
+					"value": "19573513_jdsportsit.5476340"
+				},
+				{
+					"size": "44 2/3",
+					"value": "19573513_jdsportsit.5476342"
+				},
+				{
+					"size": "46",
+					"value": "19573513_jdsportsit.5476344"
+				},
+				{
+					"size": "47 1/3",
+					"value": "19573513_jdsportsit.5476345"
+				}
+			],
+			"color": "verde"
+		}
+	]
+}
