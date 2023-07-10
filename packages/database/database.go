@@ -204,11 +204,17 @@ func SendLog(product Product) {
 	case "JD New":
 		JDNewAddLog(product)
 		break
-	case "SIZE":
-		SizeLog(product)
+	case "SIZE New":
+		SizeNew(product)
 		break
-	case "Footpatrol":
-		FootpatrolLog(product)
+	case "SIZE Restock":
+		SizeRestock(product)
+		break
+	case "FP New":
+		FpNew(product)
+		break
+	case "FP Restock":
+		FpRestock(product)
 		break
 	case "Sotf":
 		SotfLog(product)
@@ -451,7 +457,7 @@ func ZalandoLog(product Product) {
 	}
 
 	err := discord.PostWebhook("https://discord.com/api/webhooks/1120085184163885247/_boNPxubvjk50fAhIjVmwpIwLFDlWYMsr_FM7ZsrToUWEkv16pImp9FAB_MaQAaI9Zo-", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1119683086507057242/jVRDjqmMVBmlelNnUrw5Hkr9vc8fg-v8yrz7_1Qkvny7w2dSn6uJPL9WqG7vkcc-qWQa", whData)
+	//err := discord.PostWebhook("https://discord.com/api/webhooks/1127708971105538208/Tw9gm5F57gR-Xw0fvsIrFS2MokvpbpmxiJnYDOWvPyH9mFggOCaoxrzE_7AIxUMPVLUG", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -752,7 +758,7 @@ func JDLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1125118168101298257/2ZkO_w4XxzX9_1P1xiVVmxJAniwlcXgEztl70O2-KZMmkHwI_5mNc4UwT2tf1M6bNNO5", whData)
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
 	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
@@ -808,7 +814,7 @@ func JDNewAddLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1125118168101298257/2ZkO_w4XxzX9_1P1xiVVmxJAniwlcXgEztl70O2-KZMmkHwI_5mNc4UwT2tf1M6bNNO5", whData)
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
 	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
@@ -821,10 +827,12 @@ func JDNewAddLog(product Product) {
 	}
 }
 
-func SizeLog(product Product) {
+func SizeRestock(product Product) {
 	var sizeMessage string = ""
+	var pidsMessage string = ""
 	for _, size := range product.Sizes {
-		sizeMessage = sizeMessage + fmt.Sprintf("%s - %s\n", size.Size, size.Value)
+		sizeMessage = sizeMessage + fmt.Sprintf("%s\n", size.Size)
+		pidsMessage = pidsMessage + fmt.Sprintf("%s\n", size.Value)
 	}
 	whData := discord.DiscordParams{
 		Embeds: []discord.Embed{
@@ -853,12 +861,17 @@ func SizeLog(product Product) {
 					{
 						Name:   "Price",
 						Value:  product.Price,
-						Inline: true,
+						Inline: false,
 					},
 					{
 						Name:   "Sizes",
 						Value:  sizeMessage,
-						Inline: false,
+						Inline: true,
+					},
+					{
+						Name:   "Pids",
+						Value:  pidsMessage,
+						Inline: true,
 					},
 				},
 				Thumbnail: discord.Thumbnail{
@@ -868,8 +881,8 @@ func SizeLog(product Product) {
 		},
 	}
 
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125118168101298257/2ZkO_w4XxzX9_1P1xiVVmxJAniwlcXgEztl70O2-KZMmkHwI_5mNc4UwT2tf1M6bNNO5", whData)
 	err := discord.PostWebhook("https://discord.com/api/webhooks/1125157734304723075/yqF9tdcfr5vQXA4SwQHaA-28HwdAGOayjtb_eEx_SNUjn-sHdlucguxicYUADNR--R9v", whData)
+	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -881,10 +894,68 @@ func SizeLog(product Product) {
 	}
 }
 
-func FootpatrolLog(product Product) {
+func SizeNew(product Product) {
+	whData := discord.DiscordParams{
+		Embeds: []discord.Embed{
+			{
+				Author: discord.Author{
+					Name:    "Hypemedia Monitors",
+					IconURL: "https://media.discordapp.net/attachments/906886120502075403/1095465707690524753/hypemedialov2.jpg?width=1170&height=1170",
+				},
+				Title: product.Name,
+				Color: 16776975,
+				Url:   fmt.Sprintf("https://www.sizeofficial.it/product/hm/%s/", product.Sku),
+				Footer: discord.Footer{
+					Text: "Hypemedia Monitors",
+				},
+				Fields: []discord.Field{
+					{
+						Name:   "Type",
+						Value:  "New Add",
+						Inline: true,
+					},
+					{
+						Name:   "Name",
+						Value:  product.Name,
+						Inline: true,
+					},
+					{
+						Name:   "Sku",
+						Value:  product.Sku,
+						Inline: true,
+					},
+					{
+						Name:   "Price",
+						Value:  product.Price,
+						Inline: true,
+					},
+				},
+				Thumbnail: discord.Thumbnail{
+					URL: product.Image,
+				},
+			},
+		},
+	}
+
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1125157734304723075/yqF9tdcfr5vQXA4SwQHaA-28HwdAGOayjtb_eEx_SNUjn-sHdlucguxicYUADNR--R9v", whData)
+	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
+	if err != nil {
+		log.Error("An error occured while sending the webhook!", location)
+		fmt.Println(whData)
+		time.Sleep(5 * time.Second)
+		AdidasLog(product)
+	} else {
+		log.Success("Webhook sent", location)
+		return
+	}
+}
+
+func FpRestock(product Product) {
 	var sizeMessage string = ""
+	var pidsMessage string = ""
 	for _, size := range product.Sizes {
-		sizeMessage = sizeMessage + fmt.Sprintf("%s - %s\n", size.Size, size.Value)
+		sizeMessage = sizeMessage + fmt.Sprintf("%s\n", size.Size)
+		pidsMessage = pidsMessage + fmt.Sprintf("%s\n", size.Value)
 	}
 	whData := discord.DiscordParams{
 		Embeds: []discord.Embed{
@@ -895,7 +966,7 @@ func FootpatrolLog(product Product) {
 				},
 				Title: product.Name,
 				Color: 16776975,
-				Url:   fmt.Sprintf("https://www.footpatrol.it/product/hm/%s///", product.Sku),
+				Url:   fmt.Sprintf("https://www.footpatrol.it/product/hm/%s/", product.Sku),
 				Footer: discord.Footer{
 					Text: "Hypemedia Monitors",
 				},
@@ -913,12 +984,17 @@ func FootpatrolLog(product Product) {
 					{
 						Name:   "Price",
 						Value:  product.Price,
-						Inline: true,
+						Inline: false,
 					},
 					{
 						Name:   "Sizes",
 						Value:  sizeMessage,
-						Inline: false,
+						Inline: true,
+					},
+					{
+						Name:   "Pids",
+						Value:  pidsMessage,
+						Inline: true,
 					},
 				},
 				Thumbnail: discord.Thumbnail{
@@ -928,8 +1004,64 @@ func FootpatrolLog(product Product) {
 		},
 	}
 
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125118168101298257/2ZkO_w4XxzX9_1P1xiVVmxJAniwlcXgEztl70O2-KZMmkHwI_5mNc4UwT2tf1M6bNNO5", whData)
 	err := discord.PostWebhook("https://discord.com/api/webhooks/1125158035313152070/YpwWM9a8cCrMz8oL3AWY-WMH18gHeNVooQi0Hd0_VXCmizPDlvBxQ77hLzfah4rXHa76", whData)
+	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
+	if err != nil {
+		log.Error("An error occured while sending the webhook!", location)
+		fmt.Println(whData)
+		time.Sleep(5 * time.Second)
+		AdidasLog(product)
+	} else {
+		log.Success("Webhook sent", location)
+		return
+	}
+}
+
+func FpNew(product Product) {
+	whData := discord.DiscordParams{
+		Embeds: []discord.Embed{
+			{
+				Author: discord.Author{
+					Name:    "Hypemedia Monitors",
+					IconURL: "https://media.discordapp.net/attachments/906886120502075403/1095465707690524753/hypemedialov2.jpg?width=1170&height=1170",
+				},
+				Title: product.Name,
+				Color: 16776975,
+				Url:   fmt.Sprintf("https://www.footpatrol.it/product/hm/%s/", product.Sku),
+				Footer: discord.Footer{
+					Text: "Hypemedia Monitors",
+				},
+				Fields: []discord.Field{
+					{
+						Name:   "Type",
+						Value:  "New Add",
+						Inline: true,
+					},
+					{
+						Name:   "Name",
+						Value:  product.Name,
+						Inline: true,
+					},
+					{
+						Name:   "Sku",
+						Value:  product.Sku,
+						Inline: true,
+					},
+					{
+						Name:   "Price",
+						Value:  product.Price,
+						Inline: true,
+					},
+				},
+				Thumbnail: discord.Thumbnail{
+					URL: product.Image,
+				},
+			},
+		},
+	}
+
+	err := discord.PostWebhook("https://discord.com/api/webhooks/1125158035313152070/YpwWM9a8cCrMz8oL3AWY-WMH18gHeNVooQi0Hd0_VXCmizPDlvBxQ77hLzfah4rXHa76", whData)
+	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)

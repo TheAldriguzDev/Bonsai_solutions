@@ -17,7 +17,7 @@ import (
 	http "github.com/bogdanfinn/fhttp"
 )
 
-var loc string = "JD NEW ADD"
+var loc string = "Fp NEW ADD"
 
 func InitMeshNewAdd() {
 	proxyFile, err := filereader.ReadFolder("proxies", "proxies")
@@ -179,18 +179,20 @@ func (mesh *meshSession) ParseNewAdd(searchData SearchRes) error {
 
 		if strings.Contains(product.Name, "00") || strings.Contains(strings.ToLower(product.Name), "junior") {
 			// We parse the response and save in the jdNewAdd file, than another script will monitor the saved pids
-			sizes := []database.Size{}
-			tempProduct := database.Product{
-				Site:  "FP New",
-				Sku:   product.SKU,
-				Name:  product.Name,
-				Price: product.Price.Amount,
-				Image: product.MainImage,
-				Color: product.Colour,
-				Sizes: sizes,
-			}
+			if product.SKU != "642096_footpatrolit" && product.SKU != "644939_footpatrolit" && product.SKU != "598269_footpatrolit" && product.SKU != "642106_footpatrolit" {
+				sizes := []database.Size{}
+				tempProduct := database.Product{
+					Site:  "FP New",
+					Sku:   product.SKU,
+					Name:  product.Name,
+					Price: product.Price.Amount,
+					Image: product.MainImage,
+					Color: product.Colour,
+					Sizes: sizes,
+				}
 
-			productList = append(productList, tempProduct)
+				productList = append(productList, tempProduct)
+			}
 		}
 	}
 

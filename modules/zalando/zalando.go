@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"strings"
 	"sync"
@@ -89,47 +90,51 @@ func InitZalando() {
 	module.Host = "https://www.zalando.it/"
 	module.UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
 	module.Store_Region = "it"
+	module.ProxyArr = proxyArr
 	log.Success("Monitor initialised!", location)
 
 	var run bool = true
 
 	for run {
 		log.General("Monitoring...", location)
-		proxie, err := proxyManager.RandomProxy(proxyArr)
-		proxie = strings.ReplaceAll(proxie, "\r", "")
-		proxyData := strings.Split(strings.TrimSpace(proxie), ":")
-		proxyUrl := fmt.Sprintf("http://%s:%s@%s:%s", proxyData[2], proxyData[3], proxyData[0], proxyData[1])
+
+		err = module.RotateProxy()
 		if err != nil {
 			log.Error(err.Error(), location)
-		} else {
-			err = module.httpClient.SetProxy(proxyUrl)
-			if err != nil {
-				log.Error(err.Error(), location)
-			}
-			module.Proxy = proxie
 		}
-		err = module.SearchProducts("ern:collection:cat:categ:sneakers-basse-donna")
+
+		err = module.SearchProducts("ern:collection:cat:categ:bambini")
 		if err != nil {
 			log.Error(err.Error(), location)
-			time.Sleep(7 * time.Second)
+			time.Sleep(3 * time.Second)
 			continue
 		}
 
-		// go func() {
-		// 	log.General("Monitoring...", location)
-		// 	proxie, err := proxyManager.RandomProxy(proxyArr)
-		// 	proxie = strings.ReplaceAll(proxie, "\r", "")
-		// 	if err != nil {
-		// 		log.Error(err.Error(), location)
-		// 	} else {
-		// 		module.httpClient.SetProxy(proxie)
-		// 		module.Proxy = proxie
-		// 	}
-		// 	module.SearchProducts("ern:collection:cat:categ:uomo")
-		// }()
-
-		time.Sleep(7 * time.Second)
+		time.Sleep(3 * time.Second)
 	}
+}
+
+func (zala *zalandoSession) RotateProxy() error {
+	proxie, err := proxyManager.RandomProxy(zala.ProxyArr)
+	if err != nil {
+		return err
+	}
+	proxie = strings.ReplaceAll(proxie, "\r", "")
+	proxyData := strings.Split(strings.TrimSpace(proxie), ":")
+	if len(proxyData) < 4 {
+		return fmt.Errorf("The proxy format is not correct! %s", proxie)
+	}
+	proxyUrl := fmt.Sprintf("http://%s:%s@%s:%s", proxyData[2], proxyData[3], proxyData[0], proxyData[1])
+	if err != nil {
+		return err
+	} else {
+		err = zala.httpClient.SetProxy(proxyUrl)
+		if err != nil {
+			return err
+		}
+		zala.Proxy = proxie
+	}
+	return nil
 }
 
 func (zalando *zalandoSession) SearchProducts(id string) error {
@@ -151,7 +156,7 @@ func (zalando *zalandoSession) SearchProducts(id string) error {
 			AepNumberOfEntities:                   7,
 			SegmentGatedLogoWidth:                 100,
 			CategoryImageWidth:                    300,
-			First:                                 1000,
+			First:                                 genNum(400, 1000),
 			ShouldIncludeOmnibusPrice:             true,
 			GardenExperienceLogoWidth:             300,
 			IsFirstPage:                           true,
@@ -165,7 +170,7 @@ func (zalando *zalandoSession) SearchProducts(id string) error {
 			ID:                                    id,
 			IsFDBERequested:                       false,
 			ShouldIncludeThemeExperience:          true,
-			HighlightNumberOfEntities:             20,
+			HighlightNumberOfEntities:             genNum(20, 300),
 			ShouldSkipCatalogInGridCampaign:       true,
 			IsRecoCatalog:                         false,
 			ShouldIncludeFullExperience:           true,
@@ -177,7 +182,7 @@ func (zalando *zalandoSession) SearchProducts(id string) error {
 					{
 						Key:     "prices",
 						Minimum: 20,
-						Maximum: 159,
+						Maximum: genNum(300, 500),
 					},
 				},
 				FullTextQuery: "campus 00",
@@ -265,11 +270,25 @@ func (zalando *zalandoSession) ParseSearch(respData SearchResponse) error {
 	var mu sync.Mutex
 
 	for _, product := range respData.Data.Collection.Entities.Nodes {
-		if product.SKU != "AD115O1JQ-C12" && product.SKU != "AD115O1J6-B11" && product.SKU != "AD115O1J6-Q11" {
+		if product.SKU != "AD115O1JQ-C12" && product.SKU != "AD115O1J6-B11" && product.SKU != "AD115O1J6-Q11" && product.SKU != "AD115O1KC-K11" && product.SKU != "" {
 			wg.Add(1)
 
 			go zalando.GetInfoUtils(product, &productList, &wg, &mu)
 		}
+	}
+
+	forceProductList := []ForceProduct{
+		{
+			Sku:   "AD111A28H-A14",
+			Name:  "CAMPUS 00S",
+			Price: "109.99 €",
+			Image: "https://images-ext-1.discordapp.net/external/9AVhc8FZJtW9Vcs349upbOnKxlFmbJOo3r6Li0GGTsg/%3Fimwidth%3D500%26filter%3Dpackshot/https/img01.ztat.net/article/spp-media-p1/b1e9facf3a01443c8b0633716bfca5ea/07008daa57da4e22b78e8b4ba88acd50.jpg?width=718&height=1036",
+		},
+	}
+
+	for _, product := range forceProductList {
+		wg.Add(1)
+		go zalando.GetForceInfo(product, &productList, &wg, &mu)
 	}
 
 	wg.Wait()
@@ -309,9 +328,69 @@ func (zalando *zalandoSession) GetInfoUtils(product NodeData, productList *[]dat
 	}
 }
 
-func (zalando *zalandoSession) GetStock(sku string) (UpdateProduct, error) {
+type ForceProduct struct {
+	Name  string
+	Image string
+	Price string
+	Sku   string
+}
+
+func (zalando *zalandoSession) GetForceInfo(product ForceProduct, productList *[]database.Product, wg *sync.WaitGroup, mu *sync.Mutex) {
+	defer wg.Done()
+
+	tempProduct := database.Product{
+		Site:  "Zalando",
+		Sku:   product.Sku,
+		Name:  product.Name,
+		Price: product.Price,
+		Image: product.Image,
+	}
+
+	info, err := zalando.GetStock(tempProduct.Sku)
+	if err != nil {
+		log.Error(err.Error(), location)
+		return
+	}
+
+	tempProduct.Sizes = info.Sizes
+	tempProduct.Color = info.Color
+
+	if len(tempProduct.Sizes) != 0 {
+		mu.Lock()
+		*productList = append(*productList, tempProduct)
+		mu.Unlock()
+	}
+}
+
+func (zalando zalandoSession) GetStock(sku string) (UpdateProduct, error) {
 	var productResponse ProductResponse
 	var productData UpdateProduct
+
+	// Rotate proxies here
+	// We rotate the proxy for every product we need to scrape
+	proxie, err := proxyManager.RandomProxy(zalando.ProxyArr)
+	if err != nil {
+		log.Error(err.Error(), location)
+		return productData, err
+	}
+	proxie = strings.ReplaceAll(proxie, "\r", "")
+	proxyData := strings.Split(strings.TrimSpace(proxie), ":")
+	if len(proxyData) < 4 {
+		log.Error("The proxy format is not correct!", location)
+		return productData, fmt.Errorf("The proxy format is not correct! %s", proxie)
+	}
+	proxyUrl := fmt.Sprintf("http://%s:%s@%s:%s", proxyData[2], proxyData[3], proxyData[0], proxyData[1])
+	if err != nil {
+		log.Error(err.Error(), location)
+		return productData, err
+	} else {
+		err = zalando.httpClient.SetProxy(proxyUrl)
+		if err != nil {
+			log.Error(err.Error(), location)
+			return productData, err
+		}
+		zalando.Proxy = proxie
+	}
 
 	payload := Data{
 		Extensions: struct {
@@ -326,15 +405,15 @@ func (zalando *zalandoSession) GetStock(sku string) (UpdateProduct, error) {
 		OperationName: "Pdp",
 		Variables: Variables{
 			BeautyColorImageWidth:                       1,
-			BenefitsLogoWidth:                           84,
-			BrandedBarLogoWidth:                         300,
-			BrandLogoWidth:                              800,
+			BenefitsLogoWidth:                           genNum(1, 10000),
+			BrandedBarLogoWidth:                         genNum(200, 300),
+			BrandLogoWidth:                              genNum(600, 800),
 			ColorImageWidth:                             76,
 			ConfigSku:                                   sku,
-			ExperienceLogoWidth:                         300,
+			ExperienceLogoWidth:                         genNum(200, 400),
 			FullScreenGalleryWidth:                      1200,
 			FullScreenHdGalleryWidth:                    2600,
-			MaxFlagCount:                                3,
+			MaxFlagCount:                                genNum(3, 5),
 			PortraitGalleryWidth:                        1170,
 			SegmentedBannerHeaderLogoWidth:              108,
 			ShouldIncludeFlagInfo:                       false,
@@ -386,11 +465,11 @@ func (zalando *zalandoSession) GetStock(sku string) (UpdateProduct, error) {
 		"x-frontend-type":              {"mobile-app"},
 		"x-logged-in":                  {"true"},
 		"x-os-version":                 {"16.5"},
-		//"x-sales-channel": "ebf57ebf-e26d-4ebd-8009-6ad519073d2a",
-		//"x-uuid":                   {"5A2C34BE-CDC4-4B5F-9FA8-2924FAD51AD9"},
-		//"x-zalando-client-id":      {"f39a28b9-56c5-4481-817f-6684dcd97a98"},
-		"x-zalando-debug":   {"app-pdp-recos=true"},
-		"x-zalando-feature": {"pdp"},
+		"x-sales-channel":              {"ebf57ebf-e26d-4ebd-8009-6ad519073d2a"},
+		"x-uuid":                       {"5A2C34BE-CDC4-4B5F-9FA8-2924FAD51AD9"},
+		"x-zalando-client-id":          {"f39a28b9-56c5-4481-817f-6684dcd97a98"},
+		"x-zalando-debug":              {"app-pdp-recos=true"},
+		"x-zalando-feature":            {"pdp"},
 		//"x-zalando-intent-context": {"navigationTargetGroup=MEN;experience=RESOLVE"},
 		"x-zalando-mobile-app": {"3580f92a4bafb890i"},
 		//"Cookie":                   {"Zalando-Client-Id=f39a28b9-56c5-4481-817f-6684dcd97a98; ak_bmsc=D8D00258A828D590AC2E10A9E1AA9151~00000000000000000"},
@@ -452,4 +531,12 @@ func productParser(product ProductResponse) UpdateProduct {
 	updateData.Sizes = availableSizes
 
 	return updateData
+}
+
+func genNum(min, max int) int {
+	// Imposta un seme diverso per ogni esecuzione
+	rand.Seed(time.Now().UnixNano())
+
+	// Genera un numero casuale compreso tra min e max
+	return rand.Intn(max-min+1) + min
 }
