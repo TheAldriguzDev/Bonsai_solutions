@@ -7,6 +7,7 @@ import (
 
 	"github.com/TheAldriguzDev/Bonsai_solutions/api"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/adidas"
+	"github.com/TheAldriguzDev/Bonsai_solutions/modules/asos"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/bootz"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/footlocker"
 	ftlNewAdd "github.com/TheAldriguzDev/Bonsai_solutions/modules/footlockerNewAdd"
@@ -19,6 +20,7 @@ import (
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/skatedeluxe"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/sotf"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/zalando"
+	zalando_kids "github.com/TheAldriguzDev/Bonsai_solutions/modules/zalando-kids"
 	"github.com/TheAldriguzDev/Bonsai_solutions/packages/log"
 )
 
@@ -46,6 +48,7 @@ func main() {
 	log.General("14 - Sotf", location)
 	log.General("15 - Ftl New Add", location)
 	log.General("16 - Ftl Restock", location)
+	log.General("17 - Asos", location)
 	log.General("999 - Start apis", location)
 	//log.General("999 - AIO sites [Soon]", location)
 	fmt.Printf(log.Colors.DarkGrey+"\r[%s] [%s] >>> "+log.Colors.Reset, location, log.GetTime())
@@ -61,7 +64,7 @@ func main() {
 		footlocker.InitFootlocker()
 		break
 	case 2:
-		zalando.InitZalando()
+		zalando.InitZalandoWoman()
 		break
 	case 3:
 		adidas.InitAdidas()
@@ -104,6 +107,12 @@ func main() {
 		break
 	case 16:
 		ftlRestock.InitRestock()
+		break
+	case 17:
+		asos.InitAsos()
+		break
+	case 18:
+		zalando_kids.InitZalando()
 		break
 	case 999:
 		api.ApiServer()

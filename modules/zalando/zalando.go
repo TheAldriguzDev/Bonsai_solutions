@@ -53,7 +53,7 @@ func InitTls(proxy string) (zalandoSession, error) {
 	}, nil
 }
 
-func InitZalando() {
+func InitZalandoWoman() {
 	proxyFile, err := filereader.ReadFolder("proxies", "proxies")
 
 	if err != nil {
@@ -103,7 +103,7 @@ func InitZalando() {
 			log.Error(err.Error(), location)
 		}
 
-		err = module.SearchProducts("ern:collection:cat:categ:bambini")
+		err = module.SearchProducts("ern:collection:cat:categ:sneakers-basse-donna")
 		if err != nil {
 			log.Error(err.Error(), location)
 			time.Sleep(3 * time.Second)

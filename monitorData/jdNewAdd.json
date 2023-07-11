@@ -1,13 +1,200 @@
 {
 	"products": [
 		{
-			"site": "JD New",
-			"sku": "19573513_jdsportsit",
-			"name": "adidas Originals Campus 00s",
-			"price": "100.00",
-			"image": "https://i8.amplience.net/t/jpl/jdit_product_list?plu=jd_656612_al\u0026qlt=85\u0026qlt=92",
-			"sizes": [],
-			"color": "verde"
+			"site": "Asos",
+			"sku": "202531858",
+			"name": "adidas Originals - Campus - Sneakers anni '00 arancioni",
+			"price": "75,00 €",
+			"image": "images.asos-media.com/products/adidas-originals-campus-sneakers-anni-00-arancioni/202531858-1-orange",
+			"sizes": [
+				{
+					"size": "EU 48 2/3",
+					"value": "202531881"
+				}
+			],
+			"color": "ARANCIONE"
+		},
+		{
+			"site": "Asos",
+			"sku": "204441100",
+			"name": "adidas Originals - Campus 00 - Sneakers nere leopardate",
+			"price": "110,00 €",
+			"image": "images.asos-media.com/products/adidas-originals-campus-00-sneakers-nere-leopardate/204441100-1-black",
+			"sizes": [
+				{
+					"size": "EU 42",
+					"value": "204441122"
+				},
+				{
+					"size": "EU 42 2/3",
+					"value": "204441135"
+				},
+				{
+					"size": "EU 43 1/3",
+					"value": "204441129"
+				}
+			],
+			"color": "Nero"
+		},
+		{
+			"site": "Asos",
+			"sku": "203411798",
+			"name": "adidas Originals - Campus 00's - Sneakers gialle",
+			"price": "110,00 €",
+			"image": "images.asos-media.com/products/adidas-originals-campus-00s-sneakers-gialle/203411798-1-almostyellow",
+			"sizes": [
+				{
+					"size": "EU 44",
+					"value": "203411830"
+				},
+				{
+					"size": "EU 44 2/3",
+					"value": "203411819"
+				},
+				{
+					"size": "EU 45 1/3",
+					"value": "203411813"
+				},
+				{
+					"size": "EU 46",
+					"value": "203411805"
+				},
+				{
+					"size": "EU 46 2/3",
+					"value": "203411825"
+				}
+			],
+			"color": "giallo"
+		},
+		{
+			"site": "Asos",
+			"sku": "204474949",
+			"name": "adidas Originals - Campus 00 - Sneakers blu",
+			"price": "110,00 €",
+			"image": "images.asos-media.com/products/adidas-originals-campus-00-sneakers-blu/204474949-1-brightblue",
+			"sizes": [
+				{
+					"size": "EU 48",
+					"value": "204474997"
+				},
+				{
+					"size": "EU 48 2/3",
+					"value": "204474970"
+				}
+			],
+			"color": "Blu acceso"
+		},
+		{
+			"site": "Asos",
+			"sku": "203076584",
+			"name": "adidas Originals - Campus - Sneakers anni '00 marroni",
+			"price": "100,00 €",
+			"image": "images.asos-media.com/products/adidas-originals-campus-sneakers-anni-00-marroni/203076584-1-brown",
+			"sizes": [
+				{
+					"size": "EU 48 2/3",
+					"value": "203076598"
+				}
+			],
+			"color": "Brown"
+		},
+		{
+			"site": "Asos",
+			"sku": "203414519",
+			"name": "adidas Originals - Campus 00's - Sneakers gialle",
+			"price": "110,00 €",
+			"image": "images.asos-media.com/products/adidas-originals-campus-00s-sneakers-gialle/203414519-1-almostyellow",
+			"sizes": [
+				{
+					"size": "EU 41 1/3",
+					"value": "203414580"
+				},
+				{
+					"size": "EU 42 2/3",
+					"value": "203414601"
+				},
+				{
+					"size": "EU 43 1/3",
+					"value": "203414595"
+				},
+				{
+					"size": "EU 44",
+					"value": "203414602"
+				},
+				{
+					"size": "EU 44 2/3",
+					"value": "203414593"
+				},
+				{
+					"size": "EU 45 1/3",
+					"value": "203414573"
+				},
+				{
+					"size": "EU 46",
+					"value": "203414592"
+				},
+				{
+					"size": "EU 46 2/3",
+					"value": "203414599"
+				},
+				{
+					"size": "EU 47 1/3",
+					"value": "203414588"
+				},
+				{
+					"size": "EU 48",
+					"value": "203414590"
+				},
+				{
+					"size": "EU 48 2/3",
+					"value": "203414594"
+				}
+			],
+			"color": "giallo"
+		},
+		{
+			"site": "Asos",
+			"sku": "203074881",
+			"name": "adidas Originals - Campus - Sneakers anni '00 marroni",
+			"price": "110,00 €",
+			"image": "images.asos-media.com/products/adidas-originals-campus-sneakers-anni-00-marroni/203074881-1-maroon",
+			"sizes": [
+				{
+					"size": "EU 47 1/3",
+					"value": "203074923"
+				}
+			],
+			"color": "Bordeaux"
+		},
+		{
+			"site": "Asos",
+			"sku": "204441250",
+			"name": "adidas Originals - Campus 00s - Sneakers leopardate",
+			"price": "110,00 €",
+			"image": "images.asos-media.com/products/adidas-originals-campus-00s-sneakers-leopardate/204441250-1-multi",
+			"sizes": [
+				{
+					"size": "EU 40 2/3",
+					"value": "204441270"
+				},
+				{
+					"size": "EU 41 1/3",
+					"value": "204441263"
+				},
+				{
+					"size": "EU 42",
+					"value": "204441262"
+				},
+				{
+					"size": "EU 42 2/3",
+					"value": "204441269"
+				},
+				{
+					"size": "EU 43 1/3",
+					"value": "204441267"
+				}
+			],
+			"color": "MULTI"
 		}
 	]
 }
