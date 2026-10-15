@@ -133,8 +133,8 @@ func (adidas *adidasSession) SearchProducts() error {
 
 	req.Header = http.Header{
 		//"cookie": {"akacd_api_3stripes=3864663956~rv%3D7~id%3D342369957e78c748be1595b33bf5a68b"},
-		"Host":                {"api.3stripes.net"},
-		"Cookie":              {"akacd_api_3stripes=3864632107~rv=18~id=a123da15ff5ed528e454280629888100"},
+		"Host": {"api.3stripes.net"},
+		//"Cookie":              {"akacd_api_3stripes=3864632107~rv=18~id=a123da15ff5ed528e454280629888100"},
 		"accept":              {"application/hal+json"},
 		"x-device-info":       {"app/adidas; os/iOS; os-version/16.5; app-version/5.25.1; buildnumber/2023.6.13.12.5; type/iPhone14,2; fingerprint/D440FE93-EB37-49BB-A337-CA990667CD66"},
 		"x-market":            {"IT"},

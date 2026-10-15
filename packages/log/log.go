@@ -89,7 +89,7 @@ func Info(msg string, loc string) {
 	fmt.Printf(Colors.Magenta+"\r[%s] [%s] "+msg+" \n"+Colors.Reset, loc, GetTime())
 }
 
-// gegege
+// bot logs 
 
 func LogTask(message string, color string, loc string, id string) {
 	fmt.Printf(color+"\r[%s] [%s] [%s] "+message+" \n"+Colors.Reset, loc, GetTime(), id)

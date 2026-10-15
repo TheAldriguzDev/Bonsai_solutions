@@ -182,7 +182,7 @@ func (zalando *zalandoSession) SearchProducts(id string) error {
 					{
 						Key:     "prices",
 						Minimum: 20,
-						Maximum: genNum(300, 500),
+						Maximum: genNum(130, 170),
 					},
 				},
 				FullTextQuery: "campus 00",

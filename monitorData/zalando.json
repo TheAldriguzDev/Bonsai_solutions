@@ -2,17 +2,607 @@
 	"products": [
 		{
 			"site": "Zalando",
-			"sku": "AD116D1LQ-Q11",
-			"name": "CAMPUS 00S J",
-			"price": "",
-			"image": "https://img01.ztat.net/article/spp-media-p1/1a42c14139b047f09e171acc0059c788/86f754971e6f4531b5a48320ae00d159.jpg?imwidth=500\u0026filter=packshot",
+			"sku": "AD111A28H-A14",
+			"name": "CAMPUS 00S",
+			"price": "109.99 €",
+			"image": "https://images-ext-1.discordapp.net/external/9AVhc8FZJtW9Vcs349upbOnKxlFmbJOo3r6Li0GGTsg/%3Fimwidth%3D500%26filter%3Dpackshot/https/img01.ztat.net/article/spp-media-p1/b1e9facf3a01443c8b0633716bfca5ea/07008daa57da4e22b78e8b4ba88acd50.jpg?width=718\u0026height=1036",
 			"sizes": [
 				{
+					"size": "36 2/3",
+					"value": "269,99 €"
+				},
+				{
 					"size": "37 1/3",
-					"value": "219,00 €"
+					"value": "269,99 €"
+				},
+				{
+					"size": "38",
+					"value": "195,00 €"
+				},
+				{
+					"size": "38 2/3",
+					"value": "269,99 €"
+				},
+				{
+					"size": "39 1/3",
+					"value": "269,99 €"
+				},
+				{
+					"size": "40",
+					"value": "195,00 €"
+				},
+				{
+					"size": "40 2/3",
+					"value": "269,99 €"
+				},
+				{
+					"size": "41 1/3",
+					"value": "269,99 €"
+				},
+				{
+					"size": "42",
+					"value": "195,00 €"
 				}
 			],
-			"color": "core black/cloud white"
+			"color": "crystal white/preloved blue/footwear white"
+		},
+		{
+			"site": "Zalando",
+			"sku": "AD115O1KC-M11",
+			"name": "CAMPUS 00S UNISEX",
+			"price": "",
+			"image": "https://img01.ztat.net/article/spp-media-p1/6de6828625aa4c609165b80ce61001e8/b22cd53058cc4af1bf54d77100b12ade.jpg?imwidth=500\u0026filter=packshot",
+			"sizes": [
+				{
+					"size": "36",
+					"value": "195,00 €"
+				},
+				{
+					"size": "36 2/3",
+					"value": "195,00 €"
+				},
+				{
+					"size": "37 1/3",
+					"value": "195,00 €"
+				},
+				{
+					"size": "38",
+					"value": "195,00 €"
+				},
+				{
+					"size": "38 2/3",
+					"value": "195,00 €"
+				},
+				{
+					"size": "39 1/3",
+					"value": "249,99 €"
+				},
+				{
+					"size": "40",
+					"value": "249,99 €"
+				},
+				{
+					"size": "40 2/3",
+					"value": "239,99 €"
+				},
+				{
+					"size": "41 1/3",
+					"value": "239,99 €"
+				},
+				{
+					"size": "42",
+					"value": "239,99 €"
+				},
+				{
+					"size": "42 2/3",
+					"value": "195,00 €"
+				},
+				{
+					"size": "43 1/3",
+					"value": "239,99 €"
+				},
+				{
+					"size": "44",
+					"value": "239,99 €"
+				},
+				{
+					"size": "44 2/3",
+					"value": "195,00 €"
+				},
+				{
+					"size": "45 1/3",
+					"value": "195,00 €"
+				},
+				{
+					"size": "46",
+					"value": "109,99 €"
+				},
+				{
+					"size": "46 2/3",
+					"value": "109,99 €"
+				},
+				{
+					"size": "47 1/3",
+					"value": "109,99 €"
+				},
+				{
+					"size": "48",
+					"value": "109,99 €"
+				},
+				{
+					"size": "48 2/3",
+					"value": "109,99 €"
+				},
+				{
+					"size": "49 1/3",
+					"value": "109,99 €"
+				}
+			],
+			"color": "green/footwear white/collegiate green"
+		},
+		{
+			"site": "Zalando",
+			"sku": "AD115O1J7-C11",
+			"name": "CAMPUS 00S UNISEX",
+			"price": "",
+			"image": "https://img01.ztat.net/article/spp-media-p1/10eb491576e4401bbaf5b2b6d6dbe77e/2f5965aa97244175a3acfbafdc5f4389.jpg?imwidth=500\u0026filter=packshot",
+			"sizes": [
+				{
+					"size": "39 1/3",
+					"value": "195,00 €"
+				},
+				{
+					"size": "40",
+					"value": "240,00 €"
+				},
+				{
+					"size": "40 2/3",
+					"value": "199,90 €"
+				},
+				{
+					"size": "41 1/3",
+					"value": "199,90 €"
+				},
+				{
+					"size": "42",
+					"value": "219,00 €"
+				},
+				{
+					"size": "42 2/3",
+					"value": "199,90 €"
+				},
+				{
+					"size": "43 1/3",
+					"value": "249,99 €"
+				},
+				{
+					"size": "44",
+					"value": "199,90 €"
+				},
+				{
+					"size": "44 2/3",
+					"value": "199,90 €"
+				},
+				{
+					"size": "45 1/3",
+					"value": "199,90 €"
+				},
+				{
+					"size": "46",
+					"value": "199,90 €"
+				},
+				{
+					"size": "48",
+					"value": "99,99 €"
+				},
+				{
+					"size": "48 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "49 1/3",
+					"value": "99,99 €"
+				}
+			],
+			"color": "grey three/footwear white/off white"
+		},
+		{
+			"site": "Zalando",
+			"sku": "AD115O1LR-A11",
+			"name": "CAMPUS 00S UNISEX",
+			"price": "",
+			"image": "https://img01.ztat.net/article/spp-media-p1/11f1fe1c4a004744aa48650fdc072619/24015c2497734c9fa57d4e83643a0147.jpg?imwidth=500\u0026filter=packshot",
+			"sizes": [
+				{
+					"size": "36",
+					"value": "99,99 €"
+				},
+				{
+					"size": "36 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "37 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "38",
+					"value": "99,99 €"
+				},
+				{
+					"size": "38 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "39 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "40",
+					"value": "99,99 €"
+				},
+				{
+					"size": "40 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "41 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "42",
+					"value": "99,99 €"
+				},
+				{
+					"size": "42 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "43 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "44",
+					"value": "99,99 €"
+				},
+				{
+					"size": "44 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "45 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "46",
+					"value": "99,99 €"
+				},
+				{
+					"size": "46 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "47 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "48",
+					"value": "99,99 €"
+				},
+				{
+					"size": "48 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "49 1/3",
+					"value": "99,99 €"
+				}
+			],
+			"color": "core white/footwear white/off white"
+		},
+		{
+			"site": "Zalando",
+			"sku": "AD115O1J7-Q11",
+			"name": "CAMPUS 00S UNISEX",
+			"price": "",
+			"image": "https://img01.ztat.net/article/spp-media-p1/270a0ea3388e4c8dac8820a2c0ed95c4/bada51a27d7b4e658837e6f78c0826bc.jpg?imwidth=500\u0026filter=packshot",
+			"sizes": [
+				{
+					"size": "40",
+					"value": "195,00 €"
+				},
+				{
+					"size": "40 2/3",
+					"value": "240,00 €"
+				},
+				{
+					"size": "41 1/3",
+					"value": "240,00 €"
+				},
+				{
+					"size": "42",
+					"value": "249,99 €"
+				},
+				{
+					"size": "42 2/3",
+					"value": "213,00 €"
+				},
+				{
+					"size": "43 1/3",
+					"value": "213,00 €"
+				},
+				{
+					"size": "44",
+					"value": "213,00 €"
+				},
+				{
+					"size": "44 2/3",
+					"value": "213,00 €"
+				},
+				{
+					"size": "45 1/3",
+					"value": "249,99 €"
+				},
+				{
+					"size": "46",
+					"value": "289,00 €"
+				},
+				{
+					"size": "46 2/3",
+					"value": "249,99 €"
+				},
+				{
+					"size": "48 2/3",
+					"value": "109,99 €"
+				}
+			],
+			"color": "core black/footwear white/off white"
+		},
+		{
+			"site": "Zalando",
+			"sku": "AD115O1LQ-Q11",
+			"name": "CAMPUS 00S UNISEX",
+			"price": "",
+			"image": "https://img01.ztat.net/article/spp-media-p1/57496b63b43c4ee7a8017406e05d7780/38f93122fe5a420ca6f030886b65d02f.jpg?imwidth=500\u0026filter=packshot",
+			"sizes": [
+				{
+					"size": "36",
+					"value": "99,99 €"
+				},
+				{
+					"size": "36 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "40",
+					"value": "99,99 €"
+				},
+				{
+					"size": "42",
+					"value": "99,99 €"
+				},
+				{
+					"size": "42 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "43 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "44",
+					"value": "99,99 €"
+				},
+				{
+					"size": "44 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "45 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "46",
+					"value": "99,99 €"
+				},
+				{
+					"size": "46 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "47 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "48",
+					"value": "99,99 €"
+				},
+				{
+					"size": "48 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "49 1/3",
+					"value": "99,99 €"
+				}
+			],
+			"color": "core black/crystal white"
+		},
+		{
+			"site": "Zalando",
+			"sku": "AD115O1KY-A12",
+			"name": "CAMPUS 00S UNISEX",
+			"price": "",
+			"image": "https://img01.ztat.net/article/spp-media-p1/386e3c6d6d654717b350ee1dde5167d1/850f451feb58451ab463cde2862384c7.jpg?imwidth=500\u0026filter=packshot",
+			"sizes": [
+				{
+					"size": "36",
+					"value": "99,99 €"
+				},
+				{
+					"size": "46",
+					"value": "99,99 €"
+				},
+				{
+					"size": "46 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "49 1/3",
+					"value": "99,99 €"
+				}
+			],
+			"color": "white/crystal white/semi court green"
+		},
+		{
+			"site": "Zalando",
+			"sku": "AD115O1KY-A13",
+			"name": "CAMPUS 00S UNISEX",
+			"price": "",
+			"image": "https://img01.ztat.net/article/spp-media-p1/958e4a7cfb3f4c5ba0cf9aedb18a9a6a/f18281867251435d8ff0e5ec8cdcac65.jpg?imwidth=500\u0026filter=packshot",
+			"sizes": [
+				{
+					"size": "36 2/3",
+					"value": "234,00 €"
+				},
+				{
+					"size": "37 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "38",
+					"value": "234,00 €"
+				},
+				{
+					"size": "39 1/3",
+					"value": "234,00 €"
+				},
+				{
+					"size": "41 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "42",
+					"value": "99,99 €"
+				},
+				{
+					"size": "42 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "43 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "44",
+					"value": "99,99 €"
+				},
+				{
+					"size": "44 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "45 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "46",
+					"value": "99,99 €"
+				},
+				{
+					"size": "46 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "47 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "48",
+					"value": "99,99 €"
+				},
+				{
+					"size": "48 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "49 1/3",
+					"value": "99,99 €"
+				}
+			],
+			"color": "footwear white/blue/bright blue"
+		},
+		{
+			"site": "Zalando",
+			"sku": "AD115O1IL-E11",
+			"name": "CAMPUS 00S UNISEX",
+			"price": "",
+			"image": "https://img01.ztat.net/article/spp-media-p1/08959a3513ef42caa54597df4e954af5/e8a7879db0624c99973bc274d61ee737.jpg?imwidth=500\u0026filter=packshot",
+			"sizes": [
+				{
+					"size": "46 2/3",
+					"value": "109,95 €"
+				}
+			],
+			"color": "pantone/ftwr white/off white"
+		},
+		{
+			"site": "Zalando",
+			"sku": "AD115O1KY-A11",
+			"name": "CAMPUS 00S UNISEX",
+			"price": "",
+			"image": "https://img01.ztat.net/article/spp-media-p1/d85b3f34ca5f4a47adc57c5ec6c9addd/799ae48e93884659a04feb1320317233.jpg?imwidth=500\u0026filter=packshot",
+			"sizes": [
+				{
+					"size": "42",
+					"value": "110,00 €"
+				},
+				{
+					"size": "42 2/3",
+					"value": "109,95 €"
+				},
+				{
+					"size": "43 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "44",
+					"value": "99,99 €"
+				},
+				{
+					"size": "44 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "45 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "46",
+					"value": "99,99 €"
+				},
+				{
+					"size": "46 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "47 1/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "48",
+					"value": "99,99 €"
+				},
+				{
+					"size": "48 2/3",
+					"value": "99,99 €"
+				},
+				{
+					"size": "49 1/3",
+					"value": "99,99 €"
+				}
+			],
+			"color": "off white/red/preloved red"
 		}
 	]
 }

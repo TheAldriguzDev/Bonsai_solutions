@@ -16,6 +16,7 @@ import (
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/mesh/footpatrol"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/mesh/jd"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/mesh/size"
+	"github.com/TheAldriguzDev/Bonsai_solutions/modules/namshi"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/rinascente"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/skatedeluxe"
 	"github.com/TheAldriguzDev/Bonsai_solutions/modules/sotf"
@@ -49,6 +50,8 @@ func main() {
 	log.General("15 - Ftl New Add", location)
 	log.General("16 - Ftl Restock", location)
 	log.General("17 - Asos", location)
+	log.General("18 - Zalando kids", location)
+	log.General("19 - Namshi", location)
 	log.General("999 - Start apis", location)
 	//log.General("999 - AIO sites [Soon]", location)
 	fmt.Printf(log.Colors.DarkGrey+"\r[%s] [%s] >>> "+log.Colors.Reset, location, log.GetTime())
@@ -113,6 +116,9 @@ func main() {
 		break
 	case 18:
 		zalando_kids.InitZalando()
+		break
+	case 19:
+		namshi.InitNamshi()
 		break
 	case 999:
 		api.ApiServer()
