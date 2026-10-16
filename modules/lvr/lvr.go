@@ -187,8 +187,6 @@ func (lvr *lvrSession) SearchProducts() error {
 
 	// Here we need to parse the response
 
-	
-
 	return nil
 
 }
