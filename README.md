@@ -113,3 +113,7 @@ Bonsai Solutions was an exercise in building and operating a specialized web-mon
 Developed by [TheAldriguzDev](https://github.com/TheAldriguzDev).
 
 For questions about the historical project, open a GitHub issue.
+
+## Webhook configuration
+
+Discord webhook URLs are read from the environment variables listed in `.env.example`. Set them before starting the application. `.env` is ignored by Git but is not loaded automatically. Do not commit real webhook URLs.

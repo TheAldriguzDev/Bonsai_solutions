@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"sync"
 	"time"
 
@@ -175,7 +176,6 @@ func SendLog(product Product) {
 	switch product.Site {
 	case "Adidas":
 		AdidasLog(product)
-		break
 	case "Footlocker Restock":
 		//FootlockerLog(product)
 		break
@@ -184,47 +184,32 @@ func SendLog(product Product) {
 		break
 	case "Zalando":
 		ZalandoLog(product)
-		break
 	case "Bootz":
 		BootzLog(product)
-		break
 	case "Rinascente":
 		RinaLog(product)
-		break
 	case "Mana":
 		ManaLog(product)
-		break
 	case "SkateDeluxe":
 		SkateLog(product)
-		break
 	case "JD Restock":
 		JDLog(product)
-		break
 	case "JD New":
 		JDNewAddLog(product)
-		break
 	case "SIZE New":
 		SizeNew(product)
-		break
 	case "SIZE Restock":
 		SizeRestock(product)
-		break
 	case "FP New":
 		FpNew(product)
-		break
 	case "FP Restock":
 		FpRestock(product)
-		break
 	case "Sotf":
 		SotfLog(product)
-		break
-
 	case "Asos":
 		AsosLog(product)
-		break
 	case "Namshi":
 		NamshiLog(product)
-		break
 	}
 }
 
@@ -283,8 +268,12 @@ func AdidasLog(product Product) {
 		},
 	}
 
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1123628879416930434/fWivbwuzHBWBJhZ9SU3BVSFLvIGnQCyloDD34BS5eMPEHu810ueucqupKxyaHxdhjqV8", whData)
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1145309238747467866/NU-3rL-xNYYQgsTBvluhmL1oaX1fB2yZxI9HAeAPEbK2zpgOH89G2WDh3Bjem4w5775W", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_ADIDAS_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_ADIDAS_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -348,8 +337,12 @@ func FootlockerLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1145308251563491378/joGMam0ATP3GAlbpiybuEhYhf63bghRlTOYlvwegGpdsP-8ZTyscEZfAN5FLDYwH2xN-", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1119684786529779742/kwvf9VL0T-pmSh8M9juBBJSBfRS_zMdvSEquM8xSLlqoACcRJgPDSHSpiZbelzPu3qGN", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_FOOTLOCKER_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_FOOTLOCKER_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -399,8 +392,12 @@ func FtlNewLog(product Product) {
 		},
 	}
 
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1119684786529779742/kwvf9VL0T-pmSh8M9juBBJSBfRS_zMdvSEquM8xSLlqoACcRJgPDSHSpiZbelzPu3qGN", whData)
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1145308251563491378/joGMam0ATP3GAlbpiybuEhYhf63bghRlTOYlvwegGpdsP-8ZTyscEZfAN5FLDYwH2xN-", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_FTL_NEW_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_FTL_NEW_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -459,8 +456,12 @@ func ZalandoLog(product Product) {
 		},
 	}
 
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1120085184163885247/_boNPxubvjk50fAhIjVmwpIwLFDlWYMsr_FM7ZsrToUWEkv16pImp9FAB_MaQAaI9Zo-", whData)
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1145308996547387392/W788n7PV9N1NVbJzSdVckb1BS__eQZwI1Gt16xDCBf79o2RY4fKL-Gxu-M6DD-DwIjdO", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_ZALANDO_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_ZALANDO_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -519,8 +520,12 @@ func BootzLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1124468356641206405/I0A0H1cFBTr0_XNEcC6RXGVjw5eIYZj8_njszBQMtyOL4t3JBR0L9jkoqYuzy3TJvwtY", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1119683086507057242/jVRDjqmMVBmlelNnUrw5Hkr9vc8fg-v8yrz7_1Qkvny7w2dSn6uJPL9WqG7vkcc-qWQa", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_BOOTZ_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_BOOTZ_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -579,8 +584,12 @@ func RinaLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1124468356641206405/I0A0H1cFBTr0_XNEcC6RXGVjw5eIYZj8_njszBQMtyOL4t3JBR0L9jkoqYuzy3TJvwtY", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1124657248522752091/LZC0u58A4FvxTLIiV8PL4dow5wRfslch_AVM72c8SqYdmeOnDRA_FYwWUmSN5OccdXIX", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_RINA_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_RINA_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -639,8 +648,12 @@ func ManaLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1124468356641206405/I0A0H1cFBTr0_XNEcC6RXGVjw5eIYZj8_njszBQMtyOL4t3JBR0L9jkoqYuzy3TJvwtY", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1124657248522752091/LZC0u58A4FvxTLIiV8PL4dow5wRfslch_AVM72c8SqYdmeOnDRA_FYwWUmSN5OccdXIX", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_MANA_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_MANA_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -694,8 +707,12 @@ func SkateLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1104086275276951644/LXydWEdohhMoGBcG9Rx1Kzh7vGztwvCZkmpcFhDWMzN_CoTtUu1HxLekH039q79kXagG", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1124657248522752091/LZC0u58A4FvxTLIiV8PL4dow5wRfslch_AVM72c8SqYdmeOnDRA_FYwWUmSN5OccdXIX", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_SKATE_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_SKATE_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -761,8 +778,12 @@ func JDLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_J_D_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_J_D_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -817,8 +838,12 @@ func JDNewAddLog(product Product) {
 		},
 	}
 
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1145309541114855484/tPoWuTlFjQl-fzy5kH8ftV1QA47aDnOyd8GHgVJCA_9WSKDvz-1cRN-_EORQpcOWd1L9", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_J_D_NEW_ADD_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_J_D_NEW_ADD_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -884,8 +909,12 @@ func SizeRestock(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1125157734304723075/yqF9tdcfr5vQXA4SwQHaA-28HwdAGOayjtb_eEx_SNUjn-sHdlucguxicYUADNR--R9v", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_SIZE_RESTOCK")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_SIZE_RESTOCK", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -940,8 +969,12 @@ func SizeNew(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1125157734304723075/yqF9tdcfr5vQXA4SwQHaA-28HwdAGOayjtb_eEx_SNUjn-sHdlucguxicYUADNR--R9v", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_SIZE_NEW")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_SIZE_NEW", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -1007,8 +1040,12 @@ func FpRestock(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1125158035313152070/YpwWM9a8cCrMz8oL3AWY-WMH18gHeNVooQi0Hd0_VXCmizPDlvBxQ77hLzfah4rXHa76", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_FP_RESTOCK")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_FP_RESTOCK", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -1063,8 +1100,12 @@ func FpNew(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1125158035313152070/YpwWM9a8cCrMz8oL3AWY-WMH18gHeNVooQi0Hd0_VXCmizPDlvBxQ77hLzfah4rXHa76", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125157468566200413/3XJnHQh9FXmGwS3bCfuRme9ea58CHGcHsKxKLxYIbqfNb10adqfs8Pl-_WITl6AjbiY9", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_FP_NEW")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_FP_NEW", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -1118,8 +1159,12 @@ func SotfLog(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1124468356641206405/I0A0H1cFBTr0_XNEcC6RXGVjw5eIYZj8_njszBQMtyOL4t3JBR0L9jkoqYuzy3TJvwtY", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1125158035313152070/YpwWM9a8cCrMz8oL3AWY-WMH18gHeNVooQi0Hd0_VXCmizPDlvBxQ77hLzfah4rXHa76", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_SOTF_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_SOTF_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -1178,8 +1223,12 @@ func FtlKiller(product Product) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1116419327931986022/a7aZWXwSff3MNaeUPcWlWruwZd6c_xhRqLnl4YV9ECjBpaltnwTJohVe5hX5znMqn_MN", whData)
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1119684786529779742/kwvf9VL0T-pmSh8M9juBBJSBfRS_zMdvSEquM8xSLlqoACcRJgPDSHSpiZbelzPu3qGN", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_FTL_KILLER")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_FTL_KILLER", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -1238,8 +1287,12 @@ func AsosLog(product Product) {
 		},
 	}
 
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1128308013837594704/Mul84Zdn9nMaFT5gJzyeofRDsfsvbkDRfLNMHecCohYVU2OK3RWrygiZPGMoFADPrmHG", whData)
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1128398442029391942/pet-em2mqdqXvii8--mOzA9vShufHWwvUdRNL0jGw6KQiwzjqISlM-j5v4DCixeSnq5y", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_ASOS_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_ASOS_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)
@@ -1288,8 +1341,12 @@ func NamshiLog(product Product) {
 		},
 	}
 
-	//err := discord.PostWebhook("https://discord.com/api/webhooks/1128308013837594704/Mul84Zdn9nMaFT5gJzyeofRDsfsvbkDRfLNMHecCohYVU2OK3RWrygiZPGMoFADPrmHG", whData)
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1129777368123330640/TFcYlrpN2G0psnZjUo_L_-_kF03VN4llrLb4tdkEckD2sYywPiS3T05tjfK070JSJyXU", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_NAMSHI_LOG")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_NAMSHI_LOG", location)
+		return
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 	if err != nil {
 		log.Error("An error occured while sending the webhook!", location)
 		fmt.Println(whData)

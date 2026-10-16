@@ -88,7 +88,12 @@ func NotifyCrack(appName string, userLicense string, userName string) {
 		},
 	}
 
-	err := discord.PostWebhook("https://discord.com/api/webhooks/1107341933451423754/jB0AzVPBMcg8bSQmEIhVuSXca16GMExhjnZGIKCMNJKy1W_JmcM-xjTKj0z8EUvnvFiE", whData)
+	webhookURL := os.Getenv("BONSAI_WEBHOOK_PROTECTION")
+	if webhookURL == "" {
+		log.Error("Missing BONSAI_WEBHOOK_PROTECTION", "Protection")
+		os.Exit(1)
+	}
+	err := discord.PostWebhook(webhookURL, whData)
 
 	if err != nil {
 		panic(err)
