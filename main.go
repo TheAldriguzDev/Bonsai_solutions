@@ -65,66 +65,46 @@ func main() {
 	switch selection {
 	case 1:
 		footlocker.InitFootlocker()
-		break
 	case 2:
 		zalando.InitZalandoWoman()
-		break
 	case 3:
 		adidas.InitAdidas()
-		break
 	case 4:
 		bootz.InitBootz()
-		break
 	case 5:
 		rinascente.InitRina()
-		break
 	case 6:
 		manashop.InitMana()
-		break
 	case 7:
 		skatedeluxe.InitSkate()
-		break
 	case 8:
 		jd.InitMeshNewAdd()
-		break
 	case 9:
 		jd.InitJdRestock()
-		break
 	case 10:
 		size.InitMeshNewAdd()
-		break
 	case 11:
 		size.InitJdRestock()
-		break
 	case 12:
 		footpatrol.InitMeshNewAdd()
-		break
 	case 13:
 		footpatrol.InitJdRestock()
-		break
 	case 14:
 		sotf.InitSotf()
-		break
 	case 15:
 		ftlNewAdd.InitFootlocker()
-		break
 	case 16:
 		ftlRestock.InitRestock()
-		break
 	case 17:
 		asos.InitAsos()
-		break
 	case 18:
 		zalando_kids.InitZalando()
-		break
 	case 19:
 		namshi.InitNamshi()
-		break
 	case 999:
 		api.ApiServer()
 	default:
 		log.Error("No module found!", "Error")
 		os.Exit(0)
-		break
 	}
 }
